@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "nom": "Fatima",
+    "email": "fatima@email.com",
+    "role": "candidat",
+    "password": "$2b$10$yM50LM40wS4SSyavLEMleOwD9.4569cZc7iDyIJ9Wj9Gj/9tnqHva"
+  },
+  {
+    "id": 2,
+    "nom": "Karim",
+    "email": "karim@recrutement.com",
+    "role": "recruteur",
+    "password": "$2b$10$soo3u3EN70qt0.fzhDZb4ejl8gUeVqUKrFO7iEfJ9hITH5tO1V5A."
+  },
+  {
+    "id": 3,
+    "nom": "Alex",
+    "email": "alex@email.com",
+    "role": "candidat",
+    "password": "$2b$10$gv9KsYrQA9gL0h/MKfQNYu/yFlm91HTNHt2D8ehIwh9jqA3dYb.C2"
+  },
+  {
+    "id": 4,
+    "nom": "Nadia",
+    "email": "nadia@recrutement.com",
+    "role": "recruteur",
+    "password": "$2b$10$gTFDdvKRO4LMqIxAgA1/6Oh.h777uZ9UdUk6HS7rqhW1RUoquUEHK"
+  }
+]

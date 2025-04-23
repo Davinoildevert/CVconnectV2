@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "utilisateurId": 1,
+    "titre": "Développeuse Front-End",
+    "competences": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": 2,
+    "utilisateurId": 3,
+    "titre": "Développeur Back-End",
+    "competences": [
+      2,
+      3
+    ]
+  }
+]
