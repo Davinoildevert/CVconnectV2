@@ -1,7 +1,7 @@
 # CVConnect - Plateforme de Gestion de CV
 
 ## 📝 Description
-CVConnect est une plateforme web permettant aux candidats de créer et gérer leur CV, et aux recruteurs de rechercher des profils correspondant à leurs besoins. Développé dans le cadre d'un projet éducatif, CVConnect utilise TypeScript, Node.js et Express pour offrir une expérience utilisateur moderne et sécurisée.
+CVConnect est une plateforme web moderne qui permet aux utilisateurs de créer, gérer et partager leur CV de manière professionnelle. Développé dans le cadre d'un projet éducatif, CVConnect utilise TypeScript, Node.js et Express pour offrir une expérience utilisateur moderne et sécurisée.
 
 ## 🚀 Fonctionnalités
 
@@ -299,4 +299,14 @@ Pour toute question ou problème :
    - Comportement attendu
    - Captures d'écran si pertinent
    - Environnement (OS, navigateur, etc.)
+
+## Pages
+
+- **Accueil** (`/index.html`) : Page d'accueil avec présentation rapide
+- **À propos** (`/about.html`) : Page détaillant les fonctionnalités et avantages de CVConnect
+- **Connexion** (`/login.html`) : Interface de connexion
+- **Inscription** (`/register.html`) : Formulaire d'inscription
+- **Dashboard** (`/dashboard.html`) : Interface utilisateur après connexion
+- **Création de CV** (`/create-cv.html`) : Interface de création de CV
+- **Profil** (`/profile.html`) : Gestion du profil utilisateur
 
