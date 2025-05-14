@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Détail du CV - CVConnect</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/view-cv.css">
+  <link rel="stylesheet" href="css/cv-detail.css">
+</head>
+<body class="is-recruteur">
+  <div id="header-placeholder"></div>
+
+  <main class="cv-view-page">
+    <section id="cv-container" class="cv-preview">
+      <div class="profile-header">
+        <div class="profile-photo"></div>
+        <div class="profile-info">
+          <h1 id="cv-title">Titre du CV</h1>
+          <p><strong>Nom :</strong> <span id="cv-nom">Nom candidat</span></p>
+          <p><strong>Email :</strong> <span id="cv-email">email@exemple.com</span></p>
+          <p><strong>Téléphone :</strong> <span id="cv-phone">+33 6 00 00 00 00</span></p>
+          <p><strong>Adresse :</strong> <span id="cv-adresse">Non renseignée</span></p>
+          <p><strong>Âge :</strong> <span id="cv-age">Non renseigné</span></p>
+        </div>
+      </div>
+
+      <div class="profile-description">
+        <h3>Profil</h3>
+        <p>
+          Aucune description fournie.
+        </p>
+      </div>
+
+      <div class="cv-columns">
+        <div class="cv-left" id="cv-left">
+          <!-- Expériences & Formations injectées ici -->
+        </div>
+        <div class="cv-right" id="cv-right">
+          <!-- Compétences, Langues, Soft Skills injectées ici -->
+        </div>
+      </div>
+
+      <div class="cv-actions">
+        <button id="contact-btn">📩 Contacter</button>
+        <button id="fav-btn">⭐ Ajouter aux favoris</button>
+        <button id="download-btn">🧾 Télécharger le CV</button>
+      </div>
+      <div class="cv-actions-links">
+        <a href="recruteur.html" class="back-link">← Retour à la liste</a>
+        <a href="#" id="show-favoris-btn" class="favoris-link">⭐ Voir mes favoris</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modale pour les favoris -->
+  <div id="favoris-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>⭐ Mes CVs favoris</h2>
+        <button class="close-modal" id="close-favoris-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="favoris-list" class="cv-feed">
+          <!-- Liste des CVs favoris injectée ici -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="alert-container" class="alert-container"></div>
+
+  <script type="module" src="js/components.js"></script>
+  <script type="module" src="js/cv-detail.js"></script>
+</body>
+</html>

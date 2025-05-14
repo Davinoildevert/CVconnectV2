@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modifier votre CV - CVConnect</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/create-cv.css">
+  <link rel="stylesheet" href="css/edit-cv.css">
+</head>
+<body class="is-candidat">
+  <div id="header-placeholder"></div>
+
+  <main class="cv-create-page">
+    <section class="cv-form-card">
+      <h2>Modifier votre CV</h2>
+
+      <div class="style-selector">
+        <label for="cv-style">Style du CV</label>
+        <div class="style-options">
+          <input type="radio" id="style-classique" name="cv-style" value="classique" checked>
+          <label for="style-classique">Classique</label>
+
+          <input type="radio" id="style-moderne" name="cv-style" value="moderne">
+          <label for="style-moderne">Moderne</label>
+
+          <input type="radio" id="style-minimaliste" name="cv-style" value="minimaliste">
+          <label for="style-minimaliste">Minimaliste</label>
+
+          <input type="radio" id="style-creatif" name="cv-style" value="creatif">
+          <label for="style-creatif">Créatif</label>
+        </div>
+      </div>
+
+      <form id="edit-cv-form">
+        <div class="profile-header">
+          <div class="profile-photo" id="photo-frame">??</div>
+          <div class="profile-info">
+            <div class="form-group">
+              <label for="titre">Titre du CV</label>
+              <input type="text" id="titre" name="titre" required />
+            </div>
+            <div class="form-group">
+              <label for="photo">Photo (URL)</label>
+              <input type="text" id="photo" name="photo" placeholder="ex: image/photo.jpg" />
+            </div>
+            <div class="form-group">
+              <label for="telephone">Téléphone</label>
+              <input type="text" id="telephone" name="telephone" placeholder="+33..." />
+            </div>
+            <div class="form-group">
+              <label for="adresse">Adresse</label>
+              <input type="text" id="adresse" name="adresse" placeholder="ex: 123 rue Exemple, Paris" />
+            </div>
+            <div class="form-group">
+              <label for="description">Description du profil</label>
+              <textarea id="description" name="description" rows="3" placeholder="Quelques lignes sur vous..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-columns">
+          <div class="cv-left">
+            <div class="form-group">
+              <label for="formations">Formations</label>
+              <textarea id="formations" name="formations" rows="3" placeholder="Une formation par ligne"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="experiences">Expériences</label>
+              <textarea id="experiences" name="experiences" rows="3" placeholder="Une expérience par ligne"></textarea>
+            </div>
+          </div>
+
+          <div class="cv-right">
+            <div class="form-group relative">
+              <label for="competences">Compétences</label>
+              <div id="competences-tags" class="tags-container"></div>
+              <div class="competence-inputs">
+                <input type="text" id="competence-input" placeholder="Tapez une compétence et appuyez sur Entrée" autocomplete="off" />
+                <select id="competence-select" aria-label="Sélectionner une compétence">
+                  <option value="">Sélectionner une compétence</option>
+                </select>
+              </div>
+              <div id="competence-suggestions"></div>
+              <div id="competence-warning" class="warning-text"></div>
+            </div>
+            <div class="form-group">
+              <label for="softskills">Soft Skills</label>
+              <input type="text" id="softskills" name="softskills" placeholder="Ex: Communication, Esprit d'équipe" />
+            </div>
+            <div class="form-group">
+              <label for="langues">Langues</label>
+              <input type="text" id="langues" name="langues" placeholder="Ex: Français, Anglais" />
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Enregistrer les modifications</button>
+        <button type="button" id="delete-cv" class="btn btn-secondary">🗑️ Supprimer le CV</button>
+      </form>
+
+      <div id="alert-container" class="alert-container"></div>
+    </section>
+  </main>
+
+  <script type="module" src="js/edit-cv.js"></script>
+  <script type="module" src="js/components.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login - CVConnect</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="is-admin">
+  <div class="admin-login-container">
+    <div class="admin-login-box">
+      <div class="admin-login-header">
+        <img src="/public/image/logo-cvconnect.png" alt="Logo CVConnect" />
+        <h2>CVConnect Admin</h2>
+      </div>
+      <form id="admin-login-form">
+        <div class="form-group">
+          <label for="admin-key">Clé d'accès admin</label>
+          <input type="password" id="admin-key" required />
+        </div>
+        <button type="submit" class="btn-primary">Connexion</button>
+      </form>
+      <div id="admin-login-message"></div>
+    </div>
+  </div>
+  <script type="module" src="js/admin-login.js"></script>
+</body>
+</html> 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mon CV - CVConnect</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/view-cv.css">
+</head>
+<body class="is-candidat">
+  <div id="header-placeholder"></div>
+
+  <main class="cv-view-page">
+    <section id="cv-container" class="cv-preview">
+      <div class="profile-header">
+        <div class="profile-photo"></div>
+        <div class="profile-info">
+          <h1 id="cv-title">Titre du CV</h1>
+          <p><strong>Nom :</strong> <span id="cv-nom">Jean Dupont</span></p>
+          <p><strong>Email :</strong> <span id="cv-email">jean@email.com</span></p>
+          <p><strong>Téléphone :</strong> <span id="cv-phone">+33 6 12 34 56 78</span></p>
+          <p><strong>Adresse :</strong> <span id="cv-adresse">12 rue des Lilas, Paris</span></p>
+          <p><strong>Âge :</strong> <span id="cv-age">25 ans</span></p>
+        </div>
+      </div>
+
+      <div class="profile-description">
+        <h3>Profil</h3>
+        <p>
+          Aucune description.
+        </p>
+      </div>
+
+      <div class="cv-columns">
+        <div class="cv-left" id="cv-left">
+          <!-- Expériences & Formations injectées ici -->
+        </div>
+        <div class="cv-right" id="cv-right">
+          <!-- Compétences, Langues, Soft Skills injectées ici -->
+        </div>
+      </div>
+
+      <a class="btn" href="edit-cv.html">✏️ Modifier le CV</a>
+    </section>
+  </main>
+
+  <script type="module" src="js/components.js"></script>
+  <script type="module" src="js/view-cv.js"></script>
+</body>
+</html>

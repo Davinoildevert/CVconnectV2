@@ -1,0 +1,627 @@
+/* create-cv.css */
+
+.cv-create-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60px 20px;
+    background: linear-gradient(to bottom right, #f3f4f6, #ffffff);
+    min-height: calc(100vh - 80px);
+  }
+  
+  .cv-form-card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  
+  .cv-form-card h2 {
+    text-align: center;
+    color: #1f2937;
+    margin-bottom: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #374151;
+  }
+  
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+  
+  input[type="text"]:focus,
+  textarea:focus {
+    border-color: #4f46e5;
+    outline: none;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .form-double {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .form-double .form-group {
+    flex: 1;
+  }
+  
+  /* ✅ Tags de compétences */
+  #competences-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 5px 0;
+    min-height: 45px;
+  }
+  
+  .tag {
+    background: #4f46e5;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    animation: tagAppear 0.3s ease;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+    transition: all 0.2s ease;
+  }
+  
+  .tag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(79, 70, 229, 0.3);
+  }
+  
+  .tag button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .tag button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+  }
+  
+  /* ✅ Suggestions automatiques */
+  #competence-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    overflow: hidden;
+    z-index: 1000;
+    animation: slideDown 0.3s ease;
+  }
+  
+  #competence-suggestions div {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #4b5563;
+  }
+  
+  #competence-suggestions div:hover {
+    background: #eef2ff;
+    color: #4f46e5;
+    padding-left: 20px;
+  }
+  
+  /* Zone relative pour suggestions */
+  .form-group.relative {
+    position: relative;
+    margin-bottom: 30px;
+  }
+  
+  #competence-input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background-color: #f9fafb;
+  }
+  
+  #competence-input:focus {
+    border-color: #4f46e5;
+    background-color: white;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    outline: none;
+  }
+  
+  /* Message d'avertissement */
+  .warning-text {
+    color: #dc2626;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: #fef2f2;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .warning-text::before {
+    content: "⚠️";
+    font-size: 1rem;
+  }
+  
+  /* Animations */
+  @keyframes tagAppear {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  button.btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #4f46e5;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  button.btn:hover {
+    background-color: #4338ca;
+  }
+  
+  @media (max-width: 768px) {
+    .form-double {
+      flex-direction: column;
+    }
+  }
+  /* ✅ Champ photo (simple input text) */
+#photo {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  transition: border-color 0.2s;
+}
+
+#photo:focus {
+  border-color: #4f46e5;
+  outline: none;
+}
+
+/* ✅ Description textarea (apparence cohérente) */
+#description {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 80px;
+  margin-bottom: 20px;
+}
+
+#description:focus {
+  border-color: #4f46e5;
+  outline: none;
+}
+.form-header {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+  align-items: flex-start;
+}
+
+.photo-preview {
+  flex: 0 0 180px;
+}
+
+.photo-preview input {
+  width: 100%;
+}
+
+.form-main-info {
+  flex: 1;
+}
+.photo-frame {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  color: #4b5563;
+  font-weight: bold;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border: 2px solid #d1d5db;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Styles pour le sélecteur de style */
+.style-selector {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.style-selector > label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.style-options {
+  display: flex;
+  gap: 15px;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.style-options input[type="radio"] {
+  display: none;
+}
+
+.style-options label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+  border: 2px solid #e2e8f0;
+  font-size: 0.9rem;
+  justify-content: center;
+  min-width: 100px;
+}
+
+.style-options input[type="radio"]:checked + label {
+  border-color: var(--primary-color);
+  background: var(--input-bg);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Style spécifique pour les labels */
+.style-options label[for="style-classique"] {
+  border-left: 4px solid #4f46e5;
+}
+
+.style-options label[for="style-moderne"] {
+  border-left: 4px solid #3b82f6;
+}
+
+.style-options label[for="style-minimaliste"] {
+  border-left: 4px solid #111827;
+}
+
+.style-options label[for="style-creatif"] {
+  border-left: 4px solid #8b5cf6;
+}
+
+/* Styles pour les différents thèmes de CV */
+
+/* Style Classique - Sobre et professionnel */
+#cv-form.style-classique {
+  --primary-color: #4f46e5;
+  --secondary-color: #818cf8;
+  --text-color: #1f2937;
+  --border-color: #e5e7eb;
+  --bg-color: white;
+  --input-bg: #f9fafb;
+}
+
+/* Style Moderne - Épuré et dynamique */
+#cv-form.style-moderne {
+  --primary-color: #3b82f6;
+  --secondary-color: #60a5fa;
+  --text-color: #1f2937;
+  --border-color: #e5e7eb;
+  --bg-color: white;
+  --input-bg: #f0f9ff;
+}
+
+#cv-form.style-moderne .profile-header {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 20px;
+}
+
+#cv-form.style-moderne .photo-frame {
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+}
+
+#cv-form.style-moderne input,
+#cv-form.style-moderne textarea,
+#cv-form.style-moderne select {
+  border-color: var(--border-color);
+  background: var(--input-bg);
+  border-radius: 8px;
+}
+
+#cv-form.style-moderne input:focus,
+#cv-form.style-moderne textarea:focus,
+#cv-form.style-moderne select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+#cv-form.style-moderne .tag {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Style Minimaliste - Simple et élégant */
+#cv-form.style-minimaliste {
+  --primary-color: #111827;
+  --secondary-color: #374151;
+  --text-color: #111827;
+  --border-color: #9ca3af;
+  --bg-color: white;
+  --input-bg: white;
+}
+
+#cv-form.style-minimaliste input,
+#cv-form.style-minimaliste textarea,
+#cv-form.style-minimaliste select {
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 0;
+  padding: 8px 0;
+  background: transparent;
+}
+
+#cv-form.style-minimaliste input:focus,
+#cv-form.style-minimaliste textarea:focus,
+#cv-form.style-minimaliste select:focus {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+#cv-form.style-minimaliste .photo-frame {
+  border: 1px solid var(--border-color);
+}
+
+#cv-form.style-minimaliste .tag {
+  background: var(--bg-color);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+/* Style Créatif - Moderne et coloré */
+#cv-form.style-creatif {
+  --primary-color: #8b5cf6;
+  --secondary-color: #a78bfa;
+  --text-color: #1f2937;
+  --border-color: #e5e7eb;
+  --bg-color: white;
+  --input-bg: #f5f3ff;
+}
+
+#cv-form.style-creatif .profile-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+#cv-form.style-creatif .profile-header input,
+#cv-form.style-creatif .profile-header textarea {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+#cv-form.style-creatif .photo-frame {
+  border: 3px solid white;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.2);
+}
+
+#cv-form.style-creatif input,
+#cv-form.style-creatif textarea,
+#cv-form.style-creatif select {
+  border-color: var(--border-color);
+  background: var(--input-bg);
+  border-radius: 12px;
+}
+
+#cv-form.style-creatif input:focus,
+#cv-form.style-creatif textarea:focus,
+#cv-form.style-creatif select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+#cv-form.style-creatif .tag {
+  background: var(--primary-color);
+  color: white;
+  border-radius: 20px;
+}
+
+/* Styles communs pour tous les thèmes */
+#cv-form {
+  color: var(--text-color);
+}
+
+#cv-form input,
+#cv-form textarea,
+#cv-form select {
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+#cv-form input::placeholder,
+#cv-form textarea::placeholder,
+#cv-form select::placeholder {
+  color: #9ca3af;
+}
+
+#cv-form .help-text {
+  color: #6b7280;
+}
+
+/* Messages d'aide */
+.help-text {
+  display: block;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Message d'avertissement uniquement si contenu */
+.warning-text:empty {
+  display: none !important;
+}
+
+/* Styles pour les alertes */
+.alert-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alert {
+  padding: 15px 25px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.alert.success {
+  background: #10b981;
+}
+
+.alert.error {
+  background: #ef4444;
+}
+
+.alert.warning {
+  background: #f59e0b;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Bannière de page */
+.page-banner {
+  background: linear-gradient(to right, #4f46e5, #6366f1);
+  margin: -40px -40px 30px -40px;
+  padding: 20px 40px;
+  border-radius: 16px 16px 0 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.page-banner .emoji {
+  font-size: 2rem;
+}
+
+.page-banner h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Mini bannière pour l'icône */
+.mini-banner,
+.mini-banner .icon {
+  display: none;
+}

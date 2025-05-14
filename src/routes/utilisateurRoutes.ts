@@ -4,10 +4,24 @@ import {
   afficherUtilisateurs,
   ajouterUtilisateur,
   supprimerUtilisateur,
-  loginUtilisateur
+  loginUtilisateur,
+  getProfilConnecte,
+  updateProfil,
+  verifyPassword,
+  changePassword
 } from '../controllers/utilisateurController';
 import { authMiddleware } from '../middlewares/authMiddleware';
-import { getProfilConnecte } from '../controllers/utilisateurController';
+import {
+  demanderResetPassword,
+  reinitialiserPassword
+} from '../controllers/utilisateurController';
+import {
+  envoyerMessage,
+  lireMessages,
+  lireTousMessages
+} from '../controllers/utilisateurController';
+import { compterNotificationsNonLues } from '../controllers/utilisateurController';
+
 const router = express.Router();
 
 router.get('/:id/cv', authMiddleware, getCVByUtilisateurId);
@@ -20,8 +34,27 @@ router.get('/test-protected', authMiddleware, (req, res) => {
   res.json({ message: `Bienvenue ${req.user?.nom}`, user: req.user });
 
 
-router.get('/me', authMiddleware, getProfilConnecte);
 });
+
+router.get('/me', authMiddleware, getProfilConnecte);
+router.put('/me', authMiddleware, updateProfil);
+
+// Demande de réinitialisation (génère un token)
+router.post('/reset-password-request', demanderResetPassword);
+
+// Réinitialisation avec le token reçu
+router.post('/reset-password/:token', reinitialiserPassword);
+// ✉️ Messagerie interne
+router.post('/messages', authMiddleware, envoyerMessage);
+router.get('/messages/conversation/:userId', authMiddleware, lireMessages);
+router.get('/messages', authMiddleware, lireTousMessages);
+
+
+router.get('/notifications/unread-count', authMiddleware, compterNotificationsNonLues);
+
+// Routes pour le changement de mot de passe
+router.post('/verify-password', authMiddleware, verifyPassword);
+router.put('/change-password', authMiddleware, changePassword);
 
 export default router;
 

@@ -1,20 +1,31 @@
 [
   {
     "id": 1,
-    "utilisateurId": 1,
-    "titre": "Développeuse Front-End",
+    "utilisateurId": 2,
+    "titre": "Développeur Frontend",
     "competences": [
-      1,
-      2
-    ]
-  },
-  {
-    "id": 2,
-    "utilisateurId": 3,
-    "titre": "Développeur Back-End",
-    "competences": [
-      2,
-      3
-    ]
+      "1"
+    ],
+    "formations": [
+      "isen - toulon"
+    ],
+    "experiences": [
+      "naval groupe"
+    ],
+    "softskills": [
+      "créativité",
+      "rapidité d'éxécution",
+      "sociable"
+    ],
+    "langues": [
+      "français",
+      "anglais",
+      "Mandarin"
+    ],
+    "photo": "",
+    "description": "frot frot",
+    "telephone": "+33768246545",
+    "adresse": "123 rue nobel",
+    "style": "moderne"
   }
 ]

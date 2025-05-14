@@ -1,0 +1,50 @@
+/* === BASE.CSS === */
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Typographie */
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    color: #1f2937;
+    background-color: #f9fafb;
+    line-height: 1.6;
+  }
+  
+  /* Liens */
+  a {
+    color: #4f46e5;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Titres */
+  h1, h2, h3 {
+    color: #111827;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    margin-bottom: 10px;
+  }
+  
+  /* Boutons par défaut */
+  button {
+    font-family: inherit;
+    font-size: 1rem;
+  }
+  
+  /* Containers */
+  .container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+  }
+  

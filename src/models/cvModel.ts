@@ -1,59 +1,70 @@
 import fs from 'fs';
 import path from 'path';
 
-const cvFilePath = path.join(__dirname, '..', 'data', 'cvs.json');
-
-// 1. Interface CV
+// 1. Interface CV enrichie
 export interface CV {
   id: number;
   utilisateurId: number;
   titre: string;
-  competences: number[]; // tableau d’IDs de compétences
+  competences: number[];
+  formations?: string[];
+  experiences?: string[];
+  softskills?: string[];
+  langues?: string[];
+  photo?: string;        // Chemin de la photo (ex: /uploads/...)
+  description?: string;
+  telephone?: string;  // ✅
+  adresse?: string;    // ✅ 
+  style?: string;      // Style du CV (classique, moderne, etc.)
 }
 
-// 2. Chemin vers le fichier cvs.json
-const filePath = path.join(__dirname, '..', 'data', 'cvs.json');
+// 2. Chemin vers le fichier JSON
+const cvFilePath = path.join(__dirname, '..', 'data', 'cvs.json');
 
-// 3. Fonction pour lire tous les CVs
+// 3. Lire tous les CVs
 export function getAllCVs(): CV[] {
-  const rawData = fs.readFileSync(filePath, 'utf8');
-  const cvs: CV[] = JSON.parse(rawData);
-  return cvs;
+  try {
+    const rawData = fs.readFileSync(cvFilePath, 'utf8');
+    return JSON.parse(rawData);
+  } catch (error) {
+    console.error('[CV MODEL] Erreur de lecture cvs.json:', error);
+    return [];
+  }
 }
-export function addCV(newCV: CV): void {
-    const cvs = getAllCVs();
-  
-    // Générer un nouvel ID automatiquement
-    const newId = cvs.length > 0 ? cvs[cvs.length - 1].id + 1 : 1;
-    newCV.id = newId;
-  
-    cvs.push(newCV);
-  
-   
-    fs.writeFileSync(filePath, JSON.stringify(cvs, null, 2), 'utf8');
-  }
-  export function deleteCVsByUtilisateurId(utilisateurId: number): void {
-    const cvs = getAllCVs();
-  
-    // Garder seulement les CVs qui n'appartiennent pas à cet utilisateur
-    const updated = cvs.filter(cv => cv.utilisateurId !== utilisateurId);
-  
-   
-    fs.writeFileSync(filePath, JSON.stringify(updated, null, 2), 'utf8');
-  }
-  export function removeCompetenceFromCVs(competenceId: number): void {
-    const cvs = getAllCVs();
-  
-    // Pour chaque CV, retirer l'ID de compétence s'il est présent
-    const updated = cvs.map(cv => ({
-      ...cv,
-      competences: cv.competences.filter(id => id !== competenceId)
-    }));
-  
-   
-    fs.writeFileSync(filePath, JSON.stringify(updated, null, 2), 'utf8');
-  }
 
+// 4. Ajouter un CV
+export function addCV(newCV: CV): void {
+  const cvs = getAllCVs();
+  const newId = cvs.length > 0 ? cvs[cvs.length - 1].id + 1 : 1;
+  newCV.id = newId;
+
+  cvs.push(newCV);
+  fs.writeFileSync(cvFilePath, JSON.stringify(cvs, null, 2), 'utf8');
+}
+
+// 5. Supprimer tous les CVs d'un utilisateur
+export function deleteCVsByUtilisateurId(utilisateurId: number): void {
+  const cvs = getAllCVs();
+  const updated = cvs.filter(cv => cv.utilisateurId !== utilisateurId);
+  fs.writeFileSync(cvFilePath, JSON.stringify(updated, null, 2), 'utf8');
+}
+
+// 6. Supprimer une compétence dans tous les CVs
+export function removeCompetenceFromCVs(competenceId: number): void {
+  const cvs = getAllCVs();
+  const updated = cvs.map(cv => ({
+    ...cv,
+    competences: cv.competences.filter(id => id !== competenceId)
+  }));
+  fs.writeFileSync(cvFilePath, JSON.stringify(updated, null, 2), 'utf8');
+}
+
+// 7. Sauvegarder la totalité des CVs
 export function saveCVs(cvs: CV[]): void {
   fs.writeFileSync(cvFilePath, JSON.stringify(cvs, null, 2), 'utf-8');
+}
+
+// 8. Récupérer les CVs d'un utilisateur
+export function getCVsByUtilisateurId(utilisateurId: number): CV[] {
+  return getAllCVs().filter(cv => cv.utilisateurId === utilisateurId);
 }

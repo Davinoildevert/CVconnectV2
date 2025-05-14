@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Créer un compte - CVConnect</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/register.css" />
+</head>
+<body>
+  <div class="register-wrapper">
+    <div class="register-banner">
+      <img src="public/image/logo-cvconnect.png" alt="Logo CVConnect" class="register-logo" />
+      <p>Inscris-toi en 1 minute et rejoins CVConnect 🚀</p>
+    </div>
+
+    <main class="register-form-area">
+      <section class="form-card">
+        <h2>Créer un compte</h2>
+        <p class="form-subtitle">Choisissez un rôle et remplissez vos informations</p>
+
+       <form id="register-form">
+  <div class="input-group">
+    <input type="text" name="nom" id="nom" required placeholder=" " />
+    <label for="nom">👤 Nom complet</label>
+  </div>
+
+  <div class="input-group">
+    <input type="email" name="email" id="email" required placeholder=" " />
+    <label for="email">📧 Adresse email</label>
+  </div>
+
+  <div class="input-group">
+    <input type="password" name="password" id="password" required placeholder=" " />
+    <label for="password">🔒 Mot de passe</label>
+  </div>
+
+  <div class="role-buttons">
+    <button type="button" class="role-btn" data-role="candidat">🎓 Candidat</button>
+    <button type="button" class="role-btn" data-role="recruteur">💼 Recruteur</button>
+  </div>
+
+  <input type="hidden" name="role" id="role" required />
+
+
+  <!-- 👤 Candidat : date de naissance -->
+  <div id="candidat-fields" style="display: none;">
+    <label>📅 Date de naissance :</label>
+    <div class="dob-select">
+      <select id="dob-day" required></select>
+      <select id="dob-month" required></select>
+      <select id="dob-year" required></select>
+    </div>
+  </div>
+
+  <!-- 🏢 Recruteur -->
+  <div id="recruteur-fields" style="display: none;">
+    <div class="input-group">
+      <input type="text" name="entreprise" id="entreprise" required placeholder=" " />
+      <label for="entreprise">🏢 Nom de l’entreprise</label>
+    </div>
+    <div class="input-group">
+      <input type="text" name="siret" id="siret" required placeholder=" " />
+      <label for="siret">🆔 Numéro SIRET</label>
+    </div>
+  </div>
+
+  <button type="submit">Créer un compte</button>
+</form>
+
+
+
+        <p class="form-footer">Déjà inscrit ? <a href="login.html">Se connecter</a></p>
+      </section>
+    </main>
+  </div>
+
+  <div class="alert-container"></div>
+  <script type="module" src="js/register.js"></script>
+</body>
+</html>

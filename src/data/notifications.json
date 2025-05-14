@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "userId": 2,
+    "message": "Un recruteur a ajouté votre CV en favori.",
+    "lu": false,
+    "date": "2025-05-14T05:08:29.181Z"
+  },
+  {
+    "id": 2,
+    "userId": 2,
+    "message": "Jean Marie a ajouté votre CV en favori.",
+    "lu": false,
+    "date": "2025-05-14T09:44:31.775Z"
+  }
+]

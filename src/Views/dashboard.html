@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard Candidat - CVConnect</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body class="is-candidat">
+
+  <div id="header-placeholder"></div>
+
+  <main class="dashboard-page">
+    <h1 id="welcome-title">Bienvenue</h1>
+    <p><strong>Rôle :</strong> <span id="user-role"></span></p>
+
+    <section class="dashboard-grid">
+      <a href="create-cv.html" class="dashboard-card" id="btn-create-cv">
+        <span class="icon">➕</span>
+        <span>Créer un CV</span>
+      </a>
+      <a href="edit-cv.html" class="dashboard-card" id="btn-edit-cv">
+        <span class="icon">✏️</span>
+        <span>Modifier le CV</span>
+      </a>
+      <a href="view-cv.html" class="dashboard-card" id="btn-view-cv">
+        <span class="icon">👁️</span>
+        <span>Voir mon CV</span>
+      </a>
+      <a href="generate-cv.html" class="dashboard-card" id="btn-pdf-cv">
+        <span class="icon">📄</span>
+        <span>Générer PDF</span>
+      </a>
+      <a href="messages.html" class="dashboard-card" id="btn-messages">
+        <span class="icon">💬</span>
+        <span>Messagerie</span>
+      </a>
+    </section>
+
+    <section class="dashboard-section">
+      <h2>
+        📌 Intérêt des recruteurs
+        <span class="badge" id="badge-favoris" style="display: none;">0</span>
+      </h2>
+      <ul id="notifications-list">
+        <li class="disabled">Chargement...</li>
+      </ul>
+      <button class="btn btn-secondary" id="open-favoris-btn">Voir la liste complète</button>
+    </section>
+  </main>
+
+  <!-- ⭐ Modale des favoris -->
+  <div class="modal-overlay" id="modal-favoris" style="display: none;">
+    <div class="modal-content">
+      <h3>⭐ Recruteurs intéressés</h3>
+      <ul id="favoris-list" class="modal-list"></ul>
+      <button class="btn" id="close-favoris-btn">Fermer</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/dashboard.js"></script>
+  <script type="module" src="js/components.js"></script>
+</body>
+</html>

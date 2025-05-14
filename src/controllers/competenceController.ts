@@ -22,7 +22,7 @@ export function ajouterCompetence(req: Request, res: Response): void {
   }
 
   const nouvelleCompetence: Competence = {
-    id: 0, // L'ID sera généré automatiquement
+    id: 0, 
     nom
   };
 
@@ -30,7 +30,7 @@ export function ajouterCompetence(req: Request, res: Response): void {
   res.status(201).json({ message: 'Compétence ajoutée avec succès.' });
 }
 
-// 🔹 Fonction DELETE /competences/:id
+//  Fonction DELETE /competences/:id
 export function supprimerCompetence(req: Request, res: Response): void {
   const id = parseInt(req.params.id);
 

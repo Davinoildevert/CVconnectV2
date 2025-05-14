@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard - CVConnect</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <!-- Ajout des icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="is-admin">
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <img src="/public/image/logo-cvconnect.png" alt="Logo CVConnect" />
+        <h2>CVConnect</h2>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="#" data-section="dashboard" class="active">
+              <i class="fas fa-chart-line"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="#" data-section="users">
+              <i class="fas fa-users"></i>
+              Utilisateurs
+            </a>
+          </li>
+          <li>
+            <a href="#" data-section="cvs">
+              <i class="fas fa-file-alt"></i>
+              CVs
+            </a>
+          </li>
+          <li>
+            <a href="#" data-section="competences">
+              <i class="fas fa-tags"></i>
+              Compétences
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="logout-btn" class="btn-logout">
+          <i class="fas fa-sign-out-alt"></i>
+          Déconnexion
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <header class="admin-header">
+        <div class="header-left">
+          <h1>Tableau de bord</h1>
+          <p class="welcome-message">Bienvenue dans l'interface d'administration</p>
+        </div>
+        <div class="header-right">
+          <div class="admin-profile">
+            <i class="fas fa-user-shield"></i>
+            <span>Administrateur</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Section -->
+      <section id="dashboard" class="admin-section active">
+        <div class="stats-overview">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Utilisateurs</h3>
+              <p id="nb-users">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-user-graduate"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Candidats</h3>
+              <p id="nb-candidats">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Recruteurs</h3>
+              <p id="nb-recruteurs">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="stat-info">
+              <h3>CVs</h3>
+              <p id="nb-cvs">0</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="charts-container">
+          <div class="chart-card">
+            <h3>Répartition des utilisateurs</h3>
+            <canvas id="user-roles-chart"></canvas>
+          </div>
+          <div class="chart-card">
+            <h3>Top 5 des compétences recherchées</h3>
+            <canvas id="top-skills-chart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Users Section -->
+      <section id="users" class="admin-section">
+        <div class="section-header">
+          <h2>Gestion des utilisateurs</h2>
+          <div class="section-actions">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Rechercher un utilisateur...">
+            </div>
+            <div class="filter-box">
+              <select aria-label="Filtrer par rôle">
+                <option value="all">Tous les rôles</option>
+                <option value="candidat">Candidats</option>
+                <option value="recruteur">Recruteurs</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="table-container">
+          <table class="data-table" id="user-table">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Rôle</th>
+                <th>Entreprise</th>
+                <th>SIRET</th>
+                <th>Statut</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Données injectées dynamiquement -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- CVs Section -->
+      <section id="cvs" class="admin-section">
+        <div class="section-header">
+          <h2>Gestion des CVs</h2>
+          <div class="section-actions">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input type="text" id="cvSearch" placeholder="Rechercher un CV...">
+            </div>
+            <div class="filter-box">
+              <select aria-label="Filtrer par compétence">
+                <option value="all">Toutes les compétences</option>
+                <!-- Options injectées dynamiquement -->
+              </select>
+            </div>
+          </div>
+        </div>
+        <div id="cvsGrid" class="cvs-grid">
+          <!-- Les CVs seront injectés ici dynamiquement -->
+        </div>
+      </section>
+
+      <!-- Modal pour les détails du CV -->
+      <div id="cvModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Détails du CV</h2>
+            <button class="close-modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="cv-detail-content">
+              <!-- Le contenu du CV sera injecté ici -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compétences Section -->
+      <section id="competences" class="admin-section">
+        <div class="section-header">
+          <h2>Gestion des compétences</h2>
+        </div>
+        <div class="competences-container">
+          <form id="add-competence-form" class="add-competence-form">
+            <div class="input-group">
+              <input type="text" id="competence-input" placeholder="Nouvelle compétence" required>
+              <button type="submit" class="btn-primary">
+                <i class="fas fa-plus"></i>
+                Ajouter
+              </button>
+            </div>
+          </form>
+          <div class="competences-list">
+            <ul id="competence-list" class="tag-list">
+              <!-- Compétences injectées dynamiquement -->
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Messages de notification -->
+  <div id="admin-notification" class="admin-notification"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="js/admin.js"></script>
+  <script type="module" src="js/charts.js"></script>
+  <script type="module" src="js/admin-users.js"></script>
+  <script src="js/admin-cvs.js"></script>
+</body>
+</html>

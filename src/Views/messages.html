@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Messages - CVConnect</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/recruteur.css">
+  <link rel="stylesheet" href="css/messages.css">
+</head>
+<body class="is-recruteur">
+  <div id="header-placeholder"></div>
+
+  <main class="messages-page">
+    <div class="messages-container">
+      <!-- Liste des conversations -->
+      <div class="conversations-list">
+        <div class="conversations-header">
+          <h2>Conversations</h2>
+          <div class="search-conversations">
+            <input type="text" placeholder="🔍 Rechercher..." id="search-conversations">
+          </div>
+        </div>
+        <div id="conversations" class="conversations">
+          <!-- Les conversations seront injectées ici -->
+        </div>
+      </div>
+
+      <!-- Zone de conversation -->
+      <div class="conversation-area">
+        <div id="no-conversation-selected" class="no-conversation">
+          <p>👈 Sélectionnez une conversation pour commencer</p>
+        </div>
+        <div id="conversation-content" class="conversation-content" style="display: none;">
+          <div class="conversation-header">
+            <div class="contact-info">
+              <div class="profile-photo profile-initials"></div>
+              <div class="contact-details">
+                <h3 id="contact-name">Nom du contact</h3>
+                <span id="contact-role">Candidat</span>
+              </div>
+            </div>
+          </div>
+          <div class="messages-list" id="messages-list">
+            <!-- Les messages seront injectés ici -->
+          </div>
+          <div class="message-input">
+            <textarea id="message-text" placeholder="Écrivez votre message..."></textarea>
+            <button id="send-message" class="btn-send">Envoyer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="alert-container" class="alert-container"></div>
+
+  <script type="module" src="js/components.js"></script>
+  <script type="module" src="js/messages.js"></script>
+</body>
+</html> 

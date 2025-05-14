@@ -1,0 +1,170 @@
+<header class="main-header">
+    <div class="logo">
+        <a href="dashboard.html">
+            <img src="/public/image/logo-cvconnect.png" alt="CVConnect Logo" />
+        </a>
+    </div>
+    <nav>
+        <div class="profile-dropdown">
+            <button class="profile-btn">
+                👤 Mon profil
+                <span class="dropdown-arrow">▼</span>
+            </button>
+            <div class="dropdown-content">
+                <a href="#" data-modal="profile-modal">Informations</a>
+                <a href="#" data-modal="password-modal">Modifier mot de passe</a>
+                <a href="#" data-modal="guide-modal">Guide du site</a>
+            </div>
+        </div>
+        <button id="theme-toggle" class="theme-btn">🌙</button>
+        <button id="logout-btn" class="logout-btn">Déconnexion</button>
+    </nav>
+</header>
+
+<!-- Modales -->
+<div id="profile-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Informations du profil</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="profile-form">
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" value="" required>
+                </div>
+                <div class="form-group">
+                    <label for="date_naissance">Date de naissance</label>
+                    <input type="date" id="date_naissance" name="date_naissance" value="" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value="" required>
+                </div>
+                <div class="form-group">
+                    <label for="telephone">Téléphone</label>
+                    <input type="tel" id="telephone" name="telephone" value="">
+                </div>
+                <button type="submit" class="btn">Enregistrer les modifications</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="password-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Modifier le mot de passe</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="password-form">
+                <div class="form-group">
+                    <label for="current-password">Mot de passe actuel</label>
+                    <input type="password" id="current-password" name="current-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-password">Nouveau mot de passe</label>
+                    <input type="password" id="new-password" name="new-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirmer le mot de passe</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <button type="submit" class="btn">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="guide-modal" class="modal">
+    <div class="modal-content guide-modal">
+        <div class="modal-header">
+            <h2>Guide du site</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="guide-tabs">
+                <button class="tab-btn active" data-tab="candidat">Candidat</button>
+                <button class="tab-btn" data-tab="recruteur">Recruteur</button>
+            </div>
+            
+            <div class="guide-content">
+                <!-- Guide Candidat -->
+                <div class="tab-content active" id="candidat-guide">
+                    <h3>Guide du Candidat</h3>
+                    <div class="guide-section">
+                        <h4>1. Créer et Gérer votre CV</h4>
+                        <p>Votre CV est votre vitrine professionnelle :</p>
+                        <ul>
+                            <li>Créez un CV professionnel et attractif</li>
+                            <li>Mettez en avant vos compétences et expériences</li>
+                            <li>Modifiez votre CV à tout moment</li>
+                            <li>Personnalisez le design selon vos préférences</li>
+                        </ul>
+                    </div>
+                    <div class="guide-section">
+                        <h4>2. Visibilité Professionnelle</h4>
+                        <p>Augmentez votre visibilité auprès des recruteurs :</p>
+                        <ul>
+                            <li>Votre CV est visible par tous les recruteurs</li>
+                            <li>Les recruteurs peuvent vous contacter directement</li>
+                            <li>Recevez des notifications pour les nouveaux messages</li>
+                            <li>Gérez vos conversations avec les recruteurs</li>
+                        </ul>
+                    </div>
+                    <div class="guide-section">
+                        <h4>3. Communication</h4>
+                        <p>Interagissez avec les recruteurs :</p>
+                        <ul>
+                            <li>Répondez aux messages des recruteurs</li>
+                            <li>Organisez vos conversations</li>
+                            <li>Recevez des notifications en temps réel</li>
+                            <li>Gérez vos échanges professionnels</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Guide Recruteur -->
+                <div class="tab-content" id="recruteur-guide">
+                    <h3>Guide du Recruteur</h3>
+                    <div class="guide-section">
+                        <h4>1. Recherche de Talents</h4>
+                        <p>Explorez notre base de CV :</p>
+                        <ul>
+                            <li>Parcourez les profils des candidats</li>
+                            <li>Utilisez des filtres pour affiner votre recherche</li>
+                            <li>Consultez les CV détaillés</li>
+                            <li>Trouvez les talents qui correspondent à vos besoins</li>
+                        </ul>
+                    </div>
+                    <div class="guide-section">
+                        <h4>2. Gestion des Favoris</h4>
+                        <p>Organisez vos découvertes :</p>
+                        <ul>
+                            <li>Ajoutez des candidats en favoris</li>
+                            <li>Créez des listes de candidats prometteurs</li>
+                            <li>Suivez les mises à jour des CV favoris</li>
+                            <li>Organisez vos découvertes par catégorie</li>
+                        </ul>
+                    </div>
+                    <div class="guide-section">
+                        <h4>3. Communication</h4>
+                        <p>Contactez les candidats qui vous intéressent :</p>
+                        <ul>
+                            <li>Envoyez des messages aux candidats</li>
+                            <li>Initiez des conversations professionnelles</li>
+                            <li>Suivez vos échanges avec les candidats</li>
+                            <li>Recevez des notifications pour les réponses</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Conteneur pour les alertes -->
+<div class="alert-container"></div>
+  

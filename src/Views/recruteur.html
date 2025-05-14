@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard Recruteur - CVConnect</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/recruteur.css">
+</head>
+<body class="is-recruteur">
+  <div id="header-placeholder"></div>
+
+  <main class="recruteur-dashboard">
+    <div class="top-bar">
+      <form id="search-form">
+        <input type="text" id="search-input" placeholder="🔍 Rechercher par compétence..." required />
+        <button type="submit" class="btn">Rechercher</button>
+      </form>
+      <button id="show-messages-btn" class="btn-messages">
+        📩 Messages
+        <span class="messages-count" id="messages-count">0</span>
+      </button>
+      <button id="show-favoris-btn" class="btn-favoris">
+        ⭐ Mes Favoris
+        <span class="favoris-count" id="favoris-count">0</span>
+      </button>
+    </div>
+
+    <section id="cv-feed" class="cv-feed">
+      <!-- Cartes de CV injectées dynamiquement ici -->
+    </section>
+  </main>
+
+  <!-- Modale pour les favoris -->
+  <div id="favoris-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>⭐ Mes CVs favoris</h2>
+        <button class="close-modal" id="close-favoris-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="favoris-list" class="cv-feed">
+          <!-- Liste des CVs favoris injectée ici -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="alert-container" class="alert-container"></div>
+
+  <script type="module" src="js/components.js"></script>
+  <script type="module" src="js/recruteur.js"></script>
+</body>
+</html>

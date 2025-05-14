@@ -1,13 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
 
 export function checkRole(roleAutorisé: string) {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return (req: Request, res: Response, next: NextFunction): void => {
     if (!req.user) {
-      return res.status(401).json({ message: 'Utilisateur non authentifié.' });
+      res.status(401).json({ message: 'Utilisateur non authentifié.' });
+      return;
     }
 
     if (req.user.role !== roleAutorisé) {
-      return res.status(403).json({ message: `Accès réservé aux ${roleAutorisé}s.` });
+      res.status(403).json({ message: `Accès réservé aux ${roleAutorisé}s.` });
+      return;
     }
 
     next();

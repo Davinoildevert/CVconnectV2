@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Génération de CV - CVConnect</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/generate-cv.css">
+</head>
+<body class="is-candidat">
+  <div id="header-placeholder"></div>
+
+  <main class="cv-generate-page">
+    <section class="cv-style-card">
+      <h1>🎨 Choisissez un style pour votre CV</h1>
+
+      <div class="style-selector">
+        <div class="style-options">
+          <input type="radio" id="style-classique" name="cv-style" value="classique" checked>
+          <label for="style-classique">Classique</label>
+
+          <input type="radio" id="style-moderne" name="cv-style" value="moderne">
+          <label for="style-moderne">Moderne</label>
+
+          <input type="radio" id="style-minimaliste" name="cv-style" value="minimaliste">
+          <label for="style-minimaliste">Minimaliste</label>
+
+          <input type="radio" id="style-creatif" name="cv-style" value="creatif">
+          <label for="style-creatif">Créatif</label>
+        </div>
+      </div>
+
+      <div class="download-section">
+        <button id="download-pdf" class="btn btn-success">
+          📥 Télécharger en PDF
+        </button>
+      </div>
+    </section>
+
+    <section class="cv-preview" id="cv-preview">
+      <!-- Contenu du CV injecté par JS -->
+    </section>
+
+    <div id="alert-container" class="alert-container"></div>
+  </main>
+
+  <script type="module" src="js/generate-cv.js"></script>
+  <script type="module" src="js/components.js"></script>
+</body>
+
+</html>

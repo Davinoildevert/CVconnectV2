@@ -1,0 +1,342 @@
+/* === edit-cv.css === */
+
+.cv-create-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60px 20px;
+    background: linear-gradient(to bottom right, #f3f4f6, #ffffff);
+    min-height: calc(100vh - 80px);
+  }
+  
+  .cv-form-card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    position: relative;
+  }
+  
+  .cv-form-card h2 {
+    text-align: center;
+    color: #1f2937;
+    margin-bottom: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #374151;
+  }
+  
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+  
+  input[type="text"]:focus,
+  textarea:focus {
+    border-color: #4f46e5;
+    outline: none;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .form-double {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .form-double .form-group {
+    flex: 1;
+  }
+  
+  button.btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #4f46e5;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.2s ease;
+  }
+  
+  button.btn:hover {
+    background-color: #4338ca;
+  }
+  
+  button.btn.btn-secondary {
+    background-color: #ef4444;
+    margin-top: 15px;
+  }
+  
+  button.btn.btn-secondary:hover {
+    background-color: #dc2626;
+  }
+  
+  @media (max-width: 768px) {
+    .form-double {
+      flex-direction: column;
+    }
+  }
+  
+  /* Styles spécifiques pour les alertes */
+  .alert-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .alert {
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: slideIn 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    cursor: pointer;
+  }
+  
+  .alert.success {
+    background: #10b981;
+  }
+  
+  .alert.error {
+    background: #ef4444;
+  }
+  
+  .alert.warning {
+    background: #f59e0b;
+  }
+  
+  .alert::before {
+    font-size: 1.2em;
+  }
+  
+  .alert.success::before {
+    content: "✅";
+  }
+  
+  .alert.error::before {
+    content: "❌";
+  }
+  
+  .alert.warning::before {
+    content: "⚠️";
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  /* Styles pour la confirmation de suppression */
+  .delete-confirmation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    z-index: 1000;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+  }
+  
+  .delete-confirmation h3 {
+    color: #ef4444;
+    margin-bottom: 20px;
+  }
+  
+  .delete-confirmation .buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 25px;
+  }
+  
+  .delete-confirmation .btn {
+    width: auto;
+    padding: 10px 25px;
+  }
+  
+  .delete-confirmation .btn-cancel {
+    background-color: #6b7280;
+  }
+  
+  .delete-confirmation .btn-cancel:hover {
+    background-color: #4b5563;
+  }
+  
+  /* Overlay pour la confirmation */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    z-index: 999;
+  }
+  
+  /* Styles pour les différents thèmes de CV */
+  #edit-cv-form.style-classique {
+    --primary-color: #4f46e5;
+    --secondary-color: #818cf8;
+    --text-color: #1f2937;
+    --border-color: #e5e7eb;
+    --bg-color: white;
+    --input-bg: #f9fafb;
+  }
+  
+  #edit-cv-form.style-moderne {
+    --primary-color: #3b82f6;
+    --secondary-color: #60a5fa;
+    --text-color: #1f2937;
+    --border-color: #e5e7eb;
+    --bg-color: white;
+    --input-bg: #f0f9ff;
+  }
+  
+  #edit-cv-form.style-moderne .profile-header {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 20px;
+  }
+  
+  #edit-cv-form.style-moderne .profile-photo {
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+  }
+  
+  #edit-cv-form.style-minimaliste {
+    --primary-color: #111827;
+    --secondary-color: #374151;
+    --text-color: #111827;
+    --border-color: #9ca3af;
+    --bg-color: white;
+    --input-bg: white;
+  }
+  
+  #edit-cv-form.style-minimaliste input,
+  #edit-cv-form.style-minimaliste textarea {
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    padding: 8px 0;
+    background: transparent;
+  }
+  
+  #edit-cv-form.style-minimaliste input:focus,
+  #edit-cv-form.style-minimaliste textarea:focus {
+    border-bottom: 2px solid var(--primary-color);
+  }
+  
+  #edit-cv-form.style-minimaliste .profile-photo {
+    border: 1px solid var(--border-color);
+  }
+  
+  #edit-cv-form.style-creatif {
+    --primary-color: #8b5cf6;
+    --secondary-color: #a78bfa;
+    --text-color: #1f2937;
+    --border-color: #e5e7eb;
+    --bg-color: white;
+    --input-bg: #f5f3ff;
+  }
+  
+  #edit-cv-form.style-creatif .profile-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 16px;
+    padding: 25px;
+    margin: -30px -30px 30px -30px;
+    color: white;
+  }
+  
+  #edit-cv-form.style-creatif .profile-photo {
+    border: 3px solid white;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.2);
+  }
+  
+  #edit-cv-form.style-creatif input,
+  #edit-cv-form.style-creatif textarea {
+    border-color: var(--border-color);
+    background: var(--input-bg);
+    border-radius: 12px;
+  }
+  
+  #edit-cv-form.style-creatif input:focus,
+  #edit-cv-form.style-creatif textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+  }
+  
+  #edit-cv-form.style-creatif .tag {
+    background: var(--primary-color);
+    color: white;
+    border-radius: 20px;
+  }
+  
+  /* Styles communs pour tous les thèmes */
+  #edit-cv-form {
+    color: var(--text-color);
+  }
+  
+  #edit-cv-form input,
+  #edit-cv-form textarea {
+    color: var(--text-color);
+    transition: all 0.3s ease;
+  }
+  
+  #edit-cv-form input::placeholder,
+  #edit-cv-form textarea::placeholder {
+    color: #9ca3af;
+  }
+  
