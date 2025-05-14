@@ -1,0 +1,746 @@
+[
+  {
+    "id": 1,
+    "nom": "HTML5"
+  },
+  {
+    "id": 2,
+    "nom": "CSS3"
+  },
+  {
+    "id": 3,
+    "nom": "JavaScript"
+  },
+  {
+    "id": 4,
+    "nom": "TypeScript"
+  },
+  {
+    "id": 5,
+    "nom": "React"
+  },
+  {
+    "id": 6,
+    "nom": "Node.js"
+  },
+  {
+    "id": 7,
+    "nom": "Python"
+  },
+  {
+    "id": 8,
+    "nom": "Java"
+  },
+  {
+    "id": 9,
+    "nom": "C#"
+  },
+  {
+    "id": 10,
+    "nom": "PHP"
+  },
+  {
+    "id": 11,
+    "nom": "SQL"
+  },
+  {
+    "id": 12,
+    "nom": "MongoDB"
+  },
+  {
+    "id": 13,
+    "nom": "Docker"
+  },
+  {
+    "id": 14,
+    "nom": "Kubernetes"
+  },
+  {
+    "id": 15,
+    "nom": "AWS"
+  },
+  {
+    "id": 16,
+    "nom": "Azure"
+  },
+  {
+    "id": 17,
+    "nom": "Git"
+  },
+  {
+    "id": 18,
+    "nom": "DevOps"
+  },
+  {
+    "id": 19,
+    "nom": "Machine Learning"
+  },
+  {
+    "id": 20,
+    "nom": "Data Science"
+  },
+  {
+    "id": 21,
+    "nom": "React Native"
+  },
+  {
+    "id": 22,
+    "nom": "Flutter"
+  },
+  {
+    "id": 23,
+    "nom": "Swift"
+  },
+  {
+    "id": 24,
+    "nom": "Kotlin"
+  },
+  {
+    "id": 25,
+    "nom": "UI/UX Design"
+  },
+  {
+    "id": 26,
+    "nom": "Figma"
+  },
+  {
+    "id": 27,
+    "nom": "Adobe XD"
+  },
+  {
+    "id": 28,
+    "nom": "Photoshop"
+  },
+  {
+    "id": 29,
+    "nom": "Illustrator"
+  },
+  {
+    "id": 30,
+    "nom": "SEO"
+  },
+  {
+    "id": 31,
+    "nom": "Marketing Digital"
+  },
+  {
+    "id": 32,
+    "nom": "Google Analytics"
+  },
+  {
+    "id": 33,
+    "nom": "Content Marketing"
+  },
+  {
+    "id": 34,
+    "nom": "Social Media Marketing"
+  },
+  {
+    "id": 35,
+    "nom": "Agile"
+  },
+  {
+    "id": 36,
+    "nom": "Scrum"
+  },
+  {
+    "id": 37,
+    "nom": "Project Management"
+  },
+  {
+    "id": 38,
+    "nom": "Jira"
+  },
+  {
+    "id": 39,
+    "nom": "Microsoft Office"
+  },
+  {
+    "id": 40,
+    "nom": "Excel Avancé"
+  },
+  {
+    "id": 41,
+    "nom": "PowerPoint"
+  },
+  {
+    "id": 42,
+    "nom": "Word"
+  },
+  {
+    "id": 43,
+    "nom": "Comptabilité"
+  },
+  {
+    "id": 44,
+    "nom": "Finance"
+  },
+  {
+    "id": 45,
+    "nom": "Gestion de Projet"
+  },
+  {
+    "id": 46,
+    "nom": "Ressources Humaines"
+  },
+  {
+    "id": 47,
+    "nom": "Recrutement"
+  },
+  {
+    "id": 48,
+    "nom": "Formation"
+  },
+  {
+    "id": 49,
+    "nom": "Communication"
+  },
+  {
+    "id": 50,
+    "nom": "Rédaction"
+  },
+  {
+    "id": 51,
+    "nom": "Vente"
+  },
+  {
+    "id": 52,
+    "nom": "Négociation"
+  },
+  {
+    "id": 53,
+    "nom": "Service Client"
+  },
+  {
+    "id": 54,
+    "nom": "Logistique"
+  },
+  {
+    "id": 55,
+    "nom": "Supply Chain"
+  },
+  {
+    "id": 56,
+    "nom": "Qualité"
+  },
+  {
+    "id": 57,
+    "nom": "ISO 9001"
+  },
+  {
+    "id": 58,
+    "nom": "Sécurité"
+  },
+  {
+    "id": 59,
+    "nom": "Cybersécurité"
+  },
+  {
+    "id": 60,
+    "nom": "Réseaux"
+  },
+  {
+    "id": 61,
+    "nom": "Linux"
+  },
+  {
+    "id": 62,
+    "nom": "Windows Server"
+  },
+  {
+    "id": 63,
+    "nom": "Cloud Computing"
+  },
+  {
+    "id": 64,
+    "nom": "Big Data"
+  },
+  {
+    "id": 65,
+    "nom": "Business Intelligence"
+  },
+  {
+    "id": 66,
+    "nom": "Tableau"
+  },
+  {
+    "id": 67,
+    "nom": "Power BI"
+  },
+  {
+    "id": 68,
+    "nom": "SAP"
+  },
+  {
+    "id": 69,
+    "nom": "ERP"
+  },
+  {
+    "id": 70,
+    "nom": "CRM"
+  },
+  {
+    "id": 71,
+    "nom": "Salesforce"
+  },
+  {
+    "id": 72,
+    "nom": "Marketing Automation"
+  },
+  {
+    "id": 73,
+    "nom": "Email Marketing"
+  },
+  {
+    "id": 74,
+    "nom": "Growth Hacking"
+  },
+  {
+    "id": 75,
+    "nom": "E-commerce"
+  },
+  {
+    "id": 76,
+    "nom": "Shopify"
+  },
+  {
+    "id": 77,
+    "nom": "WooCommerce"
+  },
+  {
+    "id": 78,
+    "nom": "PrestaShop"
+  },
+  {
+    "id": 79,
+    "nom": "Mobile Marketing"
+  },
+  {
+    "id": 80,
+    "nom": "App Store Optimization"
+  },
+  {
+    "id": 81,
+    "nom": "Gestion de Communauté"
+  },
+  {
+    "id": 82,
+    "nom": "Community Management"
+  },
+  {
+    "id": 83,
+    "nom": "Inbound Marketing"
+  },
+  {
+    "id": 84,
+    "nom": "Outbound Marketing"
+  },
+  {
+    "id": 85,
+    "nom": "Branding"
+  },
+  {
+    "id": 86,
+    "nom": "Stratégie Marketing"
+  },
+  {
+    "id": 87,
+    "nom": "Analyse de Données"
+  },
+  {
+    "id": 88,
+    "nom": "Statistiques"
+  },
+  {
+    "id": 89,
+    "nom": "R"
+  },
+  {
+    "id": 90,
+    "nom": "Python Data Science"
+  },
+  {
+    "id": 91,
+    "nom": "TensorFlow"
+  },
+  {
+    "id": 92,
+    "nom": "PyTorch"
+  },
+  {
+    "id": 93,
+    "nom": "Deep Learning"
+  },
+  {
+    "id": 94,
+    "nom": "Computer Vision"
+  },
+  {
+    "id": 95,
+    "nom": "NLP"
+  },
+  {
+    "id": 96,
+    "nom": "Blockchain"
+  },
+  {
+    "id": 97,
+    "nom": "Vue.js"
+  },
+  {
+    "id": 98,
+    "nom": "Angular"
+  },
+  {
+    "id": 99,
+    "nom": "Svelte"
+  },
+  {
+    "id": 100,
+    "nom": "Next.js"
+  },
+  {
+    "id": 101,
+    "nom": "GraphQL"
+  },
+  {
+    "id": 102,
+    "nom": "REST API"
+  },
+  {
+    "id": 103,
+    "nom": "PostgreSQL"
+  },
+  {
+    "id": 104,
+    "nom": "MySQL"
+  },
+  {
+    "id": 105,
+    "nom": "Redis"
+  },
+  {
+    "id": 106,
+    "nom": "Elasticsearch"
+  },
+  {
+    "id": 107,
+    "nom": "Terraform"
+  },
+  {
+    "id": 108,
+    "nom": "Ansible"
+  },
+  {
+    "id": 109,
+    "nom": "Jenkins"
+  },
+  {
+    "id": 110,
+    "nom": "GitLab CI"
+  },
+  {
+    "id": 111,
+    "nom": "Google Cloud"
+  },
+  {
+    "id": 112,
+    "nom": "Firebase"
+  },
+  {
+    "id": 113,
+    "nom": "Rust"
+  },
+  {
+    "id": 114,
+    "nom": "Go"
+  },
+  {
+    "id": 115,
+    "nom": "Scala"
+  },
+  {
+    "id": 116,
+    "nom": "Ruby"
+  },
+  {
+    "id": 117,
+    "nom": "Ruby on Rails"
+  },
+  {
+    "id": 118,
+    "nom": "Django"
+  },
+  {
+    "id": 119,
+    "nom": "Flask"
+  },
+  {
+    "id": 120,
+    "nom": "Spring Boot"
+  },
+  {
+    "id": 121,
+    "nom": "Laravel"
+  },
+  {
+    "id": 122,
+    "nom": "Symfony"
+  },
+  {
+    "id": 123,
+    "nom": "Unity"
+  },
+  {
+    "id": 124,
+    "nom": "Unreal Engine"
+  },
+  {
+    "id": 125,
+    "nom": "Game Development"
+  },
+  {
+    "id": 126,
+    "nom": "3D Modeling"
+  },
+  {
+    "id": 127,
+    "nom": "Blender"
+  },
+  {
+    "id": 128,
+    "nom": "Maya"
+  },
+  {
+    "id": 129,
+    "nom": "After Effects"
+  },
+  {
+    "id": 130,
+    "nom": "Premiere Pro"
+  },
+  {
+    "id": 131,
+    "nom": "Motion Design"
+  },
+  {
+    "id": 132,
+    "nom": "Video Editing"
+  },
+  {
+    "id": 133,
+    "nom": "Sound Design"
+  },
+  {
+    "id": 134,
+    "nom": "Audio Production"
+  },
+  {
+    "id": 135,
+    "nom": "Podcast Production"
+  },
+  {
+    "id": 136,
+    "nom": "Content Creation"
+  },
+  {
+    "id": 137,
+    "nom": "Copywriting"
+  },
+  {
+    "id": 138,
+    "nom": "Technical Writing"
+  },
+  {
+    "id": 139,
+    "nom": "Documentation"
+  },
+  {
+    "id": 140,
+    "nom": "Localization"
+  },
+  {
+    "id": 141,
+    "nom": "Translation"
+  },
+  {
+    "id": 142,
+    "nom": "Interpretation"
+  },
+  {
+    "id": 143,
+    "nom": "Project Planning"
+  },
+  {
+    "id": 144,
+    "nom": "Risk Management"
+  },
+  {
+    "id": 145,
+    "nom": "Budget Management"
+  },
+  {
+    "id": 146,
+    "nom": "Team Leadership"
+  },
+  {
+    "id": 147,
+    "nom": "Conflict Resolution"
+  },
+  {
+    "id": 148,
+    "nom": "Change Management"
+  },
+  {
+    "id": 149,
+    "nom": "Strategic Planning"
+  },
+  {
+    "id": 150,
+    "nom": "Business Analysis"
+  },
+  {
+    "id": 151,
+    "nom": "Process Improvement"
+  },
+  {
+    "id": 152,
+    "nom": "Lean Management"
+  },
+  {
+    "id": 153,
+    "nom": "Six Sigma"
+  },
+  {
+    "id": 154,
+    "nom": "Quality Assurance"
+  },
+  {
+    "id": 155,
+    "nom": "Testing"
+  },
+  {
+    "id": 156,
+    "nom": "Automated Testing"
+  },
+  {
+    "id": 157,
+    "nom": "Performance Testing"
+  },
+  {
+    "id": 158,
+    "nom": "Security Testing"
+  },
+  {
+    "id": 159,
+    "nom": "Penetration Testing"
+  },
+  {
+    "id": 160,
+    "nom": "Forensic Analysis"
+  },
+  {
+    "id": 161,
+    "nom": "Incident Response"
+  },
+  {
+    "id": 162,
+    "nom": "Threat Intelligence"
+  },
+  {
+    "id": 163,
+    "nom": "Compliance"
+  },
+  {
+    "id": 164,
+    "nom": "GDPR"
+  },
+  {
+    "id": 165,
+    "nom": "Data Protection"
+  },
+  {
+    "id": 166,
+    "nom": "Privacy"
+  },
+  {
+    "id": 167,
+    "nom": "Legal Research"
+  },
+  {
+    "id": 168,
+    "nom": "Contract Law"
+  },
+  {
+    "id": 169,
+    "nom": "Intellectual Property"
+  },
+  {
+    "id": 170,
+    "nom": "Patent Law"
+  },
+  {
+    "id": 171,
+    "nom": "Trademark Law"
+  },
+  {
+    "id": 172,
+    "nom": "Environmental Law"
+  },
+  {
+    "id": 173,
+    "nom": "Sustainability"
+  },
+  {
+    "id": 174,
+    "nom": "Environmental Science"
+  },
+  {
+    "id": 175,
+    "nom": "Climate Science"
+  },
+  {
+    "id": 176,
+    "nom": "Renewable Energy"
+  },
+  {
+    "id": 177,
+    "nom": "Solar Energy"
+  },
+  {
+    "id": 178,
+    "nom": "Wind Energy"
+  },
+  {
+    "id": 179,
+    "nom": "Biotechnology"
+  },
+  {
+    "id": 180,
+    "nom": "Genetic Engineering"
+  },
+  {
+    "id": 181,
+    "nom": "Pharmaceutical Research"
+  },
+  {
+    "id": 182,
+    "nom": "Clinical Research"
+  },
+  {
+    "id": 183,
+    "nom": "Medical Writing"
+  },
+  {
+    "id": 184,
+    "nom": "Healthcare Management"
+  },
+  {
+    "id": 185,
+    "nom": "Public Health"
+  },
+  {
+    "id": 186,
+    "nom": "Epidemiology"
+  }
+] 

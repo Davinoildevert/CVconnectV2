@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadFavoris();
 
     // Charger les messages non lus
-    const resMessages = await fetch("/messages/non-lus", {
+    const resMessages = await fetch("/utilisateurs/messages/non-lus", {
       headers: { Authorization: `Bearer ${token}` }
     });
     if (resMessages.ok) {
@@ -281,6 +281,229 @@ document.addEventListener("DOMContentLoaded", async () => {
       modal.style.display = "none";
     }
   });
+
+  // Gestion des modales
+  const profileModal = document.getElementById('profile-modal');
+  const passwordModal = document.getElementById('password-modal');
+  const guideModal = document.getElementById('guide-modal');
+  const suggestionModal = document.getElementById('suggestion-modal');
+
+  // Liens du menu profil
+  const profileLink = document.getElementById('profile-link');
+  const passwordLink = document.getElementById('password-link');
+  const guideLink = document.getElementById('guide-link');
+  const suggestionBtn = document.getElementById('open-suggestion-btn');
+
+  // Boutons de fermeture
+  const closeProfileModal = document.getElementById('close-profile-modal');
+  const closePasswordModal = document.getElementById('close-password-modal');
+  const closeGuideModal = document.getElementById('close-guide-modal');
+  const closeSuggestionModal = document.getElementById('close-suggestion-modal');
+
+  // Gestion du profil
+  profileLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    profileModal.classList.add('show');
+  });
+
+  closeProfileModal.addEventListener('click', () => {
+    profileModal.classList.remove('show');
+  });
+
+  // Gestion du changement de mot de passe
+  passwordLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    passwordModal.classList.add('show');
+  });
+
+  closePasswordModal.addEventListener('click', () => {
+    passwordModal.classList.remove('show');
+  });
+
+  // Gestion du guide
+  guideLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    guideModal.classList.add('show');
+  });
+
+  closeGuideModal.addEventListener('click', () => {
+    guideModal.classList.remove('show');
+  });
+
+  // Gestion de la modale de suggestion
+  suggestionBtn.addEventListener('click', () => {
+    suggestionModal.classList.add('show');
+  });
+
+  closeSuggestionModal.addEventListener('click', () => {
+    suggestionModal.classList.remove('show');
+  });
+
+  // Gestion du formulaire de suggestion
+  const suggestionForm = document.getElementById('suggestion-form');
+  suggestionForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const type = document.getElementById('suggestion-type').value;
+    const contenu = document.getElementById('suggestion-content').value;
+
+    try {
+      const response = await fetch('/suggestions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ type, contenu })
+      });
+
+      if (response.ok) {
+        showAlert('Suggestion envoyée avec succès !', 'success');
+        suggestionModal.classList.remove('show');
+        suggestionForm.reset();
+      } else {
+        const data = await response.json();
+        showAlert(data.message || 'Erreur lors de l\'envoi de la suggestion', 'error');
+      }
+    } catch (error) {
+      console.error('Erreur:', error);
+      showAlert('Erreur lors de l\'envoi de la suggestion', 'error');
+    }
+  });
+
+  // Fermer les modales en cliquant en dehors
+  window.addEventListener('click', (e) => {
+    if (e.target === profileModal) {
+      profileModal.classList.remove('show');
+    }
+    if (e.target === passwordModal) {
+      passwordModal.classList.remove('show');
+    }
+    if (e.target === guideModal) {
+      guideModal.classList.remove('show');
+    }
+    if (e.target === suggestionModal) {
+      suggestionModal.classList.remove('show');
+    }
+  });
+
+  // Charger les données du profil
+  async function loadProfile() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      showAlert('Session expirée, veuillez vous reconnecter', 'error');
+      setTimeout(() => window.location.href = 'login.html', 2000);
+      return;
+    }
+
+    // Récupérer les données du recruteur depuis le localStorage
+    const recruteurData = JSON.parse(localStorage.getItem('recruteurData'));
+    if (!recruteurData) {
+      showAlert('Données du profil non trouvées', 'error');
+      return;
+    }
+
+    // Pré-remplir le formulaire avec les données du localStorage
+    document.getElementById('nom').value = recruteurData.nom;
+    document.getElementById('email').value = recruteurData.email;
+    document.getElementById('entreprise').value = recruteurData.entreprise;
+    document.getElementById('siret').value = recruteurData.siret;
+    
+    // Mettre à jour l'affichage dans la navbar
+    const profileName = document.querySelector('.profile-name');
+    if (profileName) {
+      profileName.textContent = recruteurData.nom;
+    }
+    
+    const profileInitials = document.querySelector('.profile-initials');
+    if (profileInitials) {
+      profileInitials.textContent = getInitials(recruteurData.nom);
+    }
+  }
+
+  // Gestion du formulaire de profil
+  const profileForm = document.getElementById('profile-form');
+  profileForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = {
+      nom: document.getElementById('nom').value,
+      email: document.getElementById('email').value,
+      entreprise: document.getElementById('entreprise').value,
+      siret: document.getElementById('siret').value
+    };
+
+    // Validation du SIRET
+    if (!/^[0-9]{14}$/.test(formData.siret)) {
+      showAlert('Le numéro SIRET doit contenir exactement 14 chiffres', 'error');
+      return;
+    }
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      showAlert('Session expirée, veuillez vous reconnecter', 'error');
+      setTimeout(() => window.location.href = 'login.html', 2000);
+      return;
+    }
+
+    try {
+      const response = await fetch('/recruteur/profile', {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.status === 401) {
+        showAlert('Session expirée, veuillez vous reconnecter', 'error');
+        setTimeout(() => window.location.href = 'login.html', 2000);
+        return;
+      }
+
+      if (response.ok) {
+        // Mettre à jour les données dans le localStorage
+        localStorage.setItem('recruteurData', JSON.stringify(formData));
+        
+        showAlert('Profil mis à jour avec succès', 'success');
+        profileModal.classList.remove('show');
+        
+        // Mettre à jour l'affichage dans la navbar
+        const profileName = document.querySelector('.profile-name');
+        if (profileName) {
+          profileName.textContent = formData.nom;
+        }
+        
+        const profileInitials = document.querySelector('.profile-initials');
+        if (profileInitials) {
+          profileInitials.textContent = getInitials(formData.nom);
+        }
+      } else {
+        const data = await response.json();
+        showAlert(data.message || 'Erreur lors de la mise à jour du profil', 'error');
+      }
+    } catch (error) {
+      console.error('Erreur mise à jour profil:', error);
+      showAlert('Erreur de connexion', 'error');
+    }
+  });
+
+  // Charger le profil au chargement de la page
+  loadProfile();
+
+  // Gestion de la déconnexion
+  const logoutBtn = document.querySelector('.logout-btn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('recruteurData');
+      showAlert('Déconnexion réussie', 'success');
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 1000);
+    });
+  }
 });
 
 function renderFeed(cvs) {

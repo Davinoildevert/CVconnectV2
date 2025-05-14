@@ -292,8 +292,39 @@ document.addEventListener("DOMContentLoaded", async () => {
       window.location.href = `messages.html?userId=${currentCV.utilisateur.id}`;
     });
 
-    document.getElementById("download-btn").addEventListener("click", () => {
-      showAlert("La fonction de téléchargement sera bientôt disponible !", 'info');
+    document.getElementById("download-btn").addEventListener("click", async () => {
+      try {
+        const button = document.getElementById("download-btn");
+        button.disabled = true;
+        button.textContent = "Génération en cours...";
+
+        const response = await fetch(`/cvs/${currentCV.id}/pdf`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        
+        if (!response.ok) {
+          throw new Error('Erreur lors de la génération du PDF');
+        }
+        
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `CV-${currentCV.titre || 'sans-titre'}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+        
+        showAlert("Le PDF a été généré avec succès");
+      } catch (err) {
+        console.error('Erreur lors du téléchargement du PDF:', err);
+        showAlert("Une erreur est survenue lors de la génération du PDF", "error");
+      } finally {
+        const button = document.getElementById("download-btn");
+        button.disabled = false;
+        button.textContent = "🧾 Télécharger le CV";
+      }
     });
 
   } catch (err) {

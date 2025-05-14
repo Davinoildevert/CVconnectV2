@@ -1,14 +1,15 @@
 import express from 'express';
 import { authMiddleware } from '../middlewares/authMiddleware';
 import { checkRole } from '../middlewares/checkRole';
-import { ajouterSuggestion, getSuggestions } from '../controllers/suggestionController';
+import { createSuggestion, getSuggestions, updateStatus } from '../controllers/suggestionController';
 
 const router = express.Router();
 
-// 📤 Soumettre une suggestion (utilisateur connecté)
-router.post('/', authMiddleware, ajouterSuggestion);
+// Route publique pour ajouter une suggestion
+router.post('/', authMiddleware, createSuggestion);
 
-// 📥 Consulter toutes les suggestions (admin uniquement)
+// Routes admin pour gérer les suggestions
 router.get('/', authMiddleware, checkRole('admin'), getSuggestions);
+router.patch('/:id/status', authMiddleware, checkRole('admin'), updateStatus);
 
 export default router;

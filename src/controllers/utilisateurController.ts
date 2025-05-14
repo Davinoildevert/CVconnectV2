@@ -171,6 +171,14 @@ export async function loginUtilisateur(req: Request, res: Response): Promise<voi
     return;
   }
 
+  // Vérifier si le compte est actif
+  if (!utilisateur.actif) {
+    res.status(403).json({ 
+      message: 'Votre compte a été désactivé par un administrateur. Veuillez contacter le support pour plus d\'informations.' 
+    });
+    return;
+  }
+
   const estValide = await bcrypt.compare(password, utilisateur.password);
   if (!estValide) {
     res.status(401).json({ message: 'Mot de passe incorrect.' });
@@ -200,7 +208,9 @@ export async function loginUtilisateur(req: Request, res: Response): Promise<voi
       id: utilisateur.id,
       nom: utilisateur.nom,
       email: utilisateur.email,
-      role: role
+      role: role,
+      entreprise: utilisateur.entreprise,
+      siret: utilisateur.siret
     }
   });
 }
@@ -303,7 +313,8 @@ export function envoyerMessage(req: Request, res: Response): void {
     from: user.id,
     to,
     contenu,
-    date: new Date().toISOString()
+    date: new Date().toISOString(),
+    lu: false
   });
 
   fs.writeFileSync(messagesPath, JSON.stringify(messages, null, 2), 'utf-8');
@@ -387,6 +398,27 @@ export function compterNotificationsNonLues(req: Request, res: Response): void {
   const nonLues = notifications.filter(n => n.userId === user.id && !n.lu);
   res.status(200).json({ count: nonLues.length });
 }
+
+export function compterMessagesNonLus(req: Request, res: Response): void {
+  const user = req.user;
+  if (!user) {
+    res.status(401).json({ message: 'Non authentifié.' });
+    return;
+  }
+
+  const messagesPath = path.join(__dirname, '..', 'data', 'messages.json');
+  const messages: any[] = fs.existsSync(messagesPath)
+    ? JSON.parse(fs.readFileSync(messagesPath, 'utf-8'))
+    : [];
+
+  // Filtrer les messages non lus reçus par l'utilisateur
+  const messagesNonLus = messages.filter(m => 
+    parseInt(m.to) === user.id && !m.lu
+  );
+
+  res.status(200).json(messagesNonLus);
+}
+
 export function formatDateFr(isoDate: string): string {
   const date = new Date(isoDate);
   return date.toLocaleString('fr-FR', {

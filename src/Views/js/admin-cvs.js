@@ -1,4 +1,4 @@
-class CVManager {
+export class CVManager {
     constructor() {
         this.cvs = [];
         this.filteredCVs = [];
@@ -11,7 +11,7 @@ class CVManager {
         // Récupérer le token d'authentification
         this.token = localStorage.getItem('token');
         if (!this.token) {
-            window.location.href = 'admin-login.html';
+            window.location.href = 'login.html';
             return;
         }
 
@@ -191,21 +191,30 @@ class CVManager {
                 </div>
             </div>
             <div class="cv-actions">
-                <button class="btn btn-secondary" onclick="cvManager.showCVDetails(${cv.id})">
+                <button class="btn btn-secondary view-details" data-id="${cv.id}">
                     <i class="fas fa-eye"></i> Voir détails
                 </button>
-                <button class="btn btn-danger" onclick="cvManager.confirmDeleteCV(${cv.id})">
+                <button class="btn btn-danger delete-cv" data-id="${cv.id}">
                     <i class="fas fa-trash"></i> Supprimer
                 </button>
             </div>
         `;
+        
+        // Ajouter les écouteurs d'événements
+        card.querySelector('.view-details').addEventListener('click', () => {
+            this.showCVDetails(cv.id);
+        });
+        
+        card.querySelector('.delete-cv').addEventListener('click', () => {
+            this.confirmDeleteCV(cv.id);
+        });
         
         return card;
     }
 
     async showCVDetails(cvId) {
         try {
-            const response = await fetch(`/cvs/${cvId}`, {
+            const response = await fetch(`/admin/cvs/${cvId}`, {
                 headers: this.headers
             });
 
@@ -214,7 +223,7 @@ class CVManager {
             }
 
             const cv = await response.json();
-            console.log('Détails du CV:', cv);
+            console.log('Détails du CV:', cv); // Debug
 
             const modalContent = document.querySelector('.modal-body');
             if (!modalContent) {
@@ -333,15 +342,26 @@ class CVManager {
         confirmModal.innerHTML = `
             <div class="modal-content delete-confirmation">
                 <div class="modal-header">
-                    <h2>Confirmer la suppression</h2>
+                    <h2>⚠️ Confirmer la suppression</h2>
                     <button class="close-modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Êtes-vous sûr de vouloir supprimer le CV de <strong>${cv.utilisateur?.nom || 'Inconnu'}</strong> ?</p>
-                    <p>Cette action est irréversible.</p>
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Vous êtes sur le point de supprimer définitivement le CV de <strong>${cv.utilisateur?.nom || 'Inconnu'}</strong>.</p>
+                    </div>
+                    <p>Cette action est irréversible et supprimera toutes les données associées à ce CV.</p>
+                    <div class="cv-details">
+                        <p><strong>Titre :</strong> ${cv.titre || 'Non spécifié'}</p>
+                        <p><strong>Compétences :</strong> ${cv.competences?.length || 0}</p>
+                    </div>
                     <div class="modal-actions">
-                        <button class="btn btn-secondary cancel-delete">Annuler</button>
-                        <button class="btn btn-danger confirm-delete">Supprimer</button>
+                        <button class="btn btn-secondary cancel-delete">
+                            <i class="fas fa-times"></i> Annuler
+                        </button>
+                        <button class="btn btn-danger confirm-delete">
+                            <i class="fas fa-trash"></i> Supprimer définitivement
+                        </button>
                     </div>
                 </div>
             </div>
@@ -393,5 +413,5 @@ class CVManager {
     }
 }
 
-// Initialisation
+// Initialiser le gestionnaire de CVs
 const cvManager = new CVManager(); 

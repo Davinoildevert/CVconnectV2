@@ -1145,3 +1145,273 @@ body.dark-theme .back-btn {
 body.dark-theme .back-btn:hover {
     background-color: #374151;
 }
+
+/* Styles pour la navbar d'edit-cv */
+.edit-cv-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-context {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.role-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4f46e5;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Styles spécifiques pour la navbar recruteur */
+.is-recruteur .nav-icon-btn {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #4f46e5;
+  transition: transform 0.2s;
+}
+
+.is-recruteur .nav-icon-btn:hover {
+  transform: scale(1.1);
+}
+
+.is-recruteur .messages-count,
+.is-recruteur .favoris-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #4f46e5;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Menu profil */
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #4f46e5;
+}
+
+.profile-initials {
+  width: 32px;
+  height: 32px;
+  background: #4f46e5;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.profile-name {
+  font-weight: 500;
+}
+
+.dropdown-arrow {
+  font-size: 0.8em;
+  margin-left: 0.5rem;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: white;
+  min-width: 200px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  z-index: 1000;
+}
+
+.profile-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: #1f2937;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.dropdown-content a:hover {
+  background: #f3f4f6;
+}
+
+/* Bouton déconnexion */
+.logout-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .edit-cv-nav {
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-logo img {
+    height: 32px;
+  }
+
+  .role-label {
+    font-size: 1rem;
+  }
+
+  .nav-actions {
+    gap: 0.5rem;
+  }
+
+  .profile-name {
+    display: none;
+  }
+
+  .profile-initials {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .edit-cv-nav {
+    padding: 0.4rem 0.8rem;
+  }
+
+  .nav-logo img {
+    height: 28px;
+  }
+
+  .role-label {
+    font-size: 0.9rem;
+  }
+
+  .nav-icon-btn {
+    font-size: 1.1rem;
+  }
+
+  .logout-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+.suggestion-btn {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.suggestion-btn:hover {
+  background: #4338ca;
+  transform: translateY(-1px);
+}
+
+.suggestion-btn:active {
+  transform: translateY(0);
+}
+
+/* Style pour la modale de suggestion */
+#suggestion-modal .modal-content {
+  max-width: 500px;
+}
+
+#suggestion-modal textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 100px;
+  transition: all 0.3s ease;
+}
+
+#suggestion-modal textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  outline: none;
+}
+
+#suggestion-modal select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#suggestion-modal select:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  outline: none;
+}

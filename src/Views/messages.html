@@ -5,11 +5,20 @@
   <title>Messages - CVConnect</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/recruteur.css">
   <link rel="stylesheet" href="css/messages.css">
 </head>
-<body class="is-recruteur">
-  <div id="header-placeholder"></div>
+<body class="is-candidat">
+  <nav class="edit-cv-nav">
+    <div class="nav-logo">
+      <img src="../public/image/logo-cvconnect.png" alt="CVConnect Logo" />
+    </div>
+    <div class="nav-context">
+      <span class="role-label">👤 Candidat</span>
+    </div>
+    <div class="nav-actions">
+      <a href="dashboard.html" class="back-btn">← Retour au Dashboard</a>
+    </div>
+  </nav>
 
   <main class="messages-page">
     <div class="messages-container">
@@ -55,7 +64,6 @@
 
   <div id="alert-container" class="alert-container"></div>
 
-  <script type="module" src="js/components.js"></script>
   <script type="module" src="js/messages.js"></script>
 </body>
 </html> 

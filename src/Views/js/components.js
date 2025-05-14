@@ -57,6 +57,25 @@ function initializeHeader() {
                     });
                 }
 
+                // Vérifier le statut de l'utilisateur à chaque requête
+                const token = localStorage.getItem('token');
+                if (token) {
+                    fetch('/utilisateurs/me', {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    }).then(res => {
+                        if (res.status === 403) {
+                            // Compte désactivé
+                            localStorage.removeItem('token');
+                            showAlert('Votre compte a été désactivé par un administrateur. Veuillez contacter le support pour plus d\'informations.', 'error');
+                            setTimeout(() => {
+                                window.location.href = "login.html";
+                            }, 3000);
+                        }
+                    });
+                }
+
                 const isCandidat = document.body.classList.contains("is-candidat");
                 const isRecruteur = document.body.classList.contains("is-recruteur");
 
@@ -81,24 +100,16 @@ function initializeHeader() {
                     const nav = placeholder.querySelector("nav");
                     if (nav) {
                         nav.innerHTML = `
+                            <div class="nav-logo">
+                                <img src="../public/image/logo-cvconnect.png" alt="CVConnect Logo" />
+                            </div>
                             <div class="nav-context">
                                 <span class="role-label">👤 Candidat</span>
-                                <a href="dashboard.html" class="back-btn">← Retour</a>
-                                <button id="logout-btn" class="btn btn-danger">Déconnexion</button>
+                            </div>
+                            <div class="nav-actions">
+                                <a href="dashboard.html" class="back-btn">← Retour au Dashboard</a>
                             </div>
                         `;
-
-                        // Ajouter l'écouteur d'événement pour le nouveau bouton de déconnexion
-                        const logoutBtn = document.getElementById("logout-btn");
-                        if (logoutBtn) {
-                            logoutBtn.addEventListener("click", () => {
-                                localStorage.removeItem("token");
-                                showAlert('Déconnexion réussie', 'success');
-                                setTimeout(() => {
-                                    window.location.href = "login.html";
-                                }, 1000);
-                            });
-                        }
                     }
                 }
 

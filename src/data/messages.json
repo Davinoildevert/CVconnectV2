@@ -4,62 +4,71 @@
     "from": 1,
     "to": "2",
     "contenu": "salut",
-    "date": "2025-05-14T08:40:17.601Z"
+    "date": "2025-05-14T08:40:17.601Z",
+    "lu": false
   },
   {
     "id": 2,
     "from": 1,
     "to": "2",
     "contenu": "salut",
-    "date": "2025-05-14T08:43:19.698Z"
+    "date": "2025-05-14T08:43:19.698Z",
+    "lu": false
   },
   {
     "id": 3,
     "from": 1,
     "to": "2",
     "contenu": "salut",
-    "date": "2025-05-14T08:45:21.060Z"
+    "date": "2025-05-14T08:45:21.060Z",
+    "lu": false
   },
   {
     "id": 4,
     "from": 1,
     "to": "2",
     "contenu": "cc",
-    "date": "2025-05-14T08:45:28.021Z"
+    "date": "2025-05-14T08:45:28.021Z",
+    "lu": false
   },
   {
     "id": 5,
     "from": 1,
     "to": "2",
     "contenu": "hello",
-    "date": "2025-05-14T08:48:51.943Z"
+    "date": "2025-05-14T08:48:51.943Z",
+    "lu": false
   },
   {
     "id": 6,
     "from": 1,
     "to": "2",
     "contenu": "fff",
-    "date": "2025-05-14T08:51:16.105Z"
+    "date": "2025-05-14T08:51:16.105Z",
+    "lu": false
   },
   {
     "id": 7,
     "from": 1,
     "to": "2",
     "contenu": "coucou",
-    "date": "2025-05-14T08:57:28.644Z"
+    "date": "2025-05-14T08:57:28.644Z",
+    "lu": false
   },
   {
     "id": 8,
     "from": 1,
     "to": "2",
     "contenu": "yo",
-    "date": "2025-05-14T09:08:39.228Z"
+    "date": "2025-05-14T09:08:39.228Z",
+    "lu": false
   },
   {
     "id": 9,
     "from": 2,
     "to": "1",
     "contenu": "bonjour",
-    "date": "2025-05-14T09:26:12.365Z"
+    "date": "2025-05-14T09:26:12.365Z",
+    "lu": false
   }
 ]

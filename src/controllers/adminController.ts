@@ -153,3 +153,45 @@ export function getStats(req: Request, res: Response): void {
 
   res.status(200).json(stats);
 }
+
+export function getCVDetails(req: Request, res: Response): void {
+  const cvId = parseInt(req.params.id);
+
+  if (isNaN(cvId)) {
+    res.status(400).json({ message: 'ID de CV invalide.' });
+    return;
+  }
+
+  const cvs = getAllCVs();
+  const cv = cvs.find(c => c.id === cvId);
+
+  if (!cv) {
+    res.status(404).json({ message: 'CV non trouvé.' });
+    return;
+  }
+
+  // Récupérer les informations de l'utilisateur
+  const utilisateurs = getAllUtilisateurs();
+  const utilisateur = utilisateurs.find(u => u.id === cv.utilisateurId);
+
+  // Récupérer les noms des compétences
+  const competences = getAllCompetences();
+  const mapCompetences = new Map<number, string>();
+  competences.forEach(c => mapCompetences.set(c.id, c.nom));
+
+  // Construire la réponse avec toutes les informations
+  const cvDetails = {
+    ...cv,
+    utilisateur: utilisateur ? {
+      nom: utilisateur.nom,
+      email: utilisateur.email,
+      role: utilisateur.role
+    } : null,
+    competences: cv.competences.map(id => {
+      const numId = typeof id === 'string' ? parseInt(id) : id;
+      return mapCompetences.get(numId) || 'Inconnue';
+    })
+  };
+
+  res.status(200).json(cvDetails);
+}

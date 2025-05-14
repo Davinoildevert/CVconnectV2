@@ -8,8 +8,163 @@
   <link rel="stylesheet" href="css/dashboard.css" />
 </head>
 <body class="is-candidat">
+  <nav class="edit-cv-nav">
+    <div class="nav-logo">
+      <img src="../public/image/logo-cvconnect.png" alt="CVConnect Logo" />
+    </div>
+    <div class="nav-context">
+      <span class="role-label">👤 Candidat</span>
+    </div>
+    <div class="nav-actions">
+      <div class="profile-dropdown">
+        <button class="profile-btn">
+          <div class="profile-initials">C</div>
+          <span class="profile-name">Candidat</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
+        <div class="dropdown-content">
+          <a href="#" id="profile-link">👤 Mon profil</a>
+          <a href="#" id="password-link">🔒 Changer mot de passe</a>
+          <a href="#" id="guide-link">📖 Guide d'utilisation</a>
+        </div>
+      </div>
+      <button class="suggestion-btn" id="open-suggestion-btn">💡 Suggestion</button>
+      <button class="logout-btn">Déconnexion</button>
+    </div>
+  </nav>
 
-  <div id="header-placeholder"></div>
+  <!-- Modale pour les suggestions -->
+  <div id="suggestion-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>💡 Faire une suggestion</h2>
+        <button class="close-modal" id="close-suggestion-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="suggestion-form">
+          <div class="form-group">
+            <label for="suggestion-type">Type de suggestion</label>
+            <select id="suggestion-type" name="type" required>
+              <option value="">Sélectionner un type</option>
+              <option value="competence">Compétence</option>
+              <option value="fonctionnalite">Fonctionnalité</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="suggestion-content">Votre suggestion</label>
+            <textarea id="suggestion-content" name="contenu" rows="4" required 
+                      placeholder="Décrivez votre suggestion ici..."></textarea>
+          </div>
+          <button type="submit" class="btn">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale pour le profil -->
+  <div id="profile-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>👤 Mon profil</h2>
+        <button class="close-modal" id="close-profile-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="profile-form">
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="dateNaissance">Date de naissance</label>
+            <input type="date" id="dateNaissance" name="dateNaissance" required />
+          </div>
+          <div class="form-group">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" required />
+          </div>
+          <button type="submit" class="btn">Enregistrer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale pour le changement de mot de passe -->
+  <div id="password-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>🔒 Changer mot de passe</h2>
+        <button class="close-modal" id="close-password-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="password-form">
+          <div class="form-group">
+            <label for="current-password">Mot de passe actuel</label>
+            <input type="password" id="current-password" name="current-password" required />
+          </div>
+          <div class="form-group">
+            <label for="new-password">Nouveau mot de passe</label>
+            <input type="password" id="new-password" name="new-password" required />
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirmer le mot de passe</label>
+            <input type="password" id="confirm-password" name="confirm-password" required />
+          </div>
+          <button type="submit" class="btn">Changer le mot de passe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale pour le guide -->
+  <div id="guide-modal" class="modal guide-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>📖 Guide d'utilisation</h2>
+        <button class="close-modal" id="close-guide-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="guide-tabs">
+          <button class="tab-btn active" data-tab="general">Général</button>
+          <button class="tab-btn" data-tab="cv">CV</button>
+          <button class="tab-btn" data-tab="messages">Messages</button>
+        </div>
+        <div class="tab-content active" id="general-tab">
+          <div class="guide-section">
+            <h4>Bienvenue sur CVConnect</h4>
+            <p>Cette plateforme vous permet de créer et gérer votre CV professionnel.</p>
+          </div>
+        </div>
+        <div class="tab-content" id="cv-tab">
+          <div class="guide-section">
+            <h4>Gestion de votre CV</h4>
+            <p>Créez et modifiez votre CV :</p>
+            <ul>
+              <li>Ajoutez vos informations personnelles</li>
+              <li>Décrivez vos expériences professionnelles</li>
+              <li>Listez vos compétences et formations</li>
+              <li>Générez un PDF de votre CV</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tab-content" id="messages-tab">
+          <div class="guide-section">
+            <h4>Communication</h4>
+            <p>Interagissez avec les recruteurs :</p>
+            <ul>
+              <li>Répondez aux messages des recruteurs</li>
+              <li>Organisez vos conversations</li>
+              <li>Recevez des notifications en temps réel</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main class="dashboard-page">
     <h1 id="welcome-title">Bienvenue</h1>

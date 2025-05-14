@@ -18,5 +18,9 @@
   {
     "id": 5,
     "nom": "patissier"
+  },
+  {
+    "id": 6,
+    "nom": "film"
   }
 ]

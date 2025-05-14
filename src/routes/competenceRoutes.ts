@@ -1,10 +1,15 @@
 import express from 'express';
-import { afficherCompetences, ajouterCompetence, supprimerCompetence } from '../controllers/competenceController';
+import { getAllCompetences, addCompetence, deleteCompetence } from '../controllers/competenceController';
+import { authMiddleware } from '../middlewares/authMiddleware';
+import { checkRole } from '../middlewares/checkRole';
 
 const router = express.Router();
 
-router.get('/', afficherCompetences);
-router.post('/', ajouterCompetence);
-router.delete('/:id', supprimerCompetence);
+// Routes publiques
+router.get('/', getAllCompetences);
+
+// Routes protégées (admin)
+router.post('/', authMiddleware, checkRole('admin'), addCompetence);
+router.delete('/:id', authMiddleware, checkRole('admin'), deleteCompetence);
 
 export default router;

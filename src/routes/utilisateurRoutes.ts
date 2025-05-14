@@ -18,7 +18,8 @@ import {
 import {
   envoyerMessage,
   lireMessages,
-  lireTousMessages
+  lireTousMessages,
+  compterMessagesNonLus
 } from '../controllers/utilisateurController';
 import { compterNotificationsNonLues } from '../controllers/utilisateurController';
 
@@ -48,6 +49,7 @@ router.post('/reset-password/:token', reinitialiserPassword);
 router.post('/messages', authMiddleware, envoyerMessage);
 router.get('/messages/conversation/:userId', authMiddleware, lireMessages);
 router.get('/messages', authMiddleware, lireTousMessages);
+router.get('/messages/non-lus', authMiddleware, compterMessagesNonLus);
 
 
 router.get('/notifications/unread-count', authMiddleware, compterNotificationsNonLues);

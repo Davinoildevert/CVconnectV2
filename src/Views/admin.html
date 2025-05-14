@@ -43,6 +43,12 @@
               Compétences
             </a>
           </li>
+          <li>
+            <a href="#" data-section="suggestions">
+              <i class="fas fa-lightbulb"></i>
+              Suggestions
+            </a>
+          </li>
         </ul>
       </nav>
       <div class="sidebar-footer">
@@ -218,6 +224,43 @@
           </div>
         </div>
       </section>
+
+      <!-- Suggestions Section -->
+      <section id="suggestions" class="admin-section">
+        <div class="section-header">
+          <h2>Suggestions</h2>
+          <div class="section-actions">
+            <button id="refresh-suggestions-btn">
+              <i class="fas fa-sync-alt"></i>
+              Actualiser
+            </button>
+            <div class="filter-group">
+              <select id="suggestion-filter">
+                <option value="all">Toutes les suggestions</option>
+                <option value="competence">Compétences</option>
+                <option value="fonctionnalite">Fonctionnalités</option>
+                <option value="autre">Autres</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Contenu</th>
+                <th>Utilisateur</th>
+                <th>Date</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody id="suggestions-list">
+              <!-- Les suggestions seront ajoutées ici dynamiquement -->
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
   </div>
 
@@ -228,6 +271,8 @@
   <script type="module" src="js/admin.js"></script>
   <script type="module" src="js/charts.js"></script>
   <script type="module" src="js/admin-users.js"></script>
-  <script src="js/admin-cvs.js"></script>
+  <script type="module" src="js/admin-cvs.js"></script>
+  <script type="module" src="js/admin-competences.js"></script>
+  <script type="module" src="js/admin-suggestions.js"></script>
 </body>
 </html>

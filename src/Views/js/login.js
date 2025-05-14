@@ -35,6 +35,16 @@ loginForm.addEventListener('submit', async (e) => {
         // Stocker le token
         localStorage.setItem('token', data.token);
         
+        // Stocker les données de l'utilisateur
+        if (data.utilisateur.role === 'recruteur') {
+          localStorage.setItem('recruteurData', JSON.stringify({
+            nom: data.utilisateur.nom,
+            email: data.utilisateur.email,
+            entreprise: data.utilisateur.entreprise,
+            siret: data.utilisateur.siret
+          }));
+        }
+        
         // Message de succès avant redirection
         showAlert("Connexion réussie !", "success");
         

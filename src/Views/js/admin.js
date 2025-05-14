@@ -1,11 +1,12 @@
 import { handle401 } from "./auth.js";
 import { renderUserRolesChart, renderTopSkillsChart } from "./charts.js";
 import { UserManager } from "./admin-users.js";
+import { CVManager } from "./admin-cvs.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
  const token = localStorage.getItem("token");
  if (!token) {
-   window.location.href = "admin-login.html";
+   window.location.href = "login.html";
    return;
  }
 
@@ -14,54 +15,50 @@ document.addEventListener("DOMContentLoaded", () => {
    "Content-Type": "application/json",
  };
 
- // Vérifier que c'est bien un token admin et charger les données
- fetch("/admin/utilisateurs", { headers })
-   .then(res => {
-     if (res.status === 401 || res.status === 403) {
-       localStorage.removeItem("token");
-       window.location.href = "admin-login.html";
-       return;
-     }
-     return res.json();
-   })
-   .then(users => {
-     if (!users) return;
+ // Initialisation des gestionnaires
+ const userManager = new UserManager();
+ const cvManager = new CVManager();
+
+ // Fonction pour charger les statistiques du dashboard
+ async function loadDashboardStats() {
+   try {
+     // Charger les statistiques depuis l'API
+     const statsResponse = await fetch("/admin/stats", { headers });
      
-     // Calculer la répartition des utilisateurs
-     const stats = {
-       candidats: users.filter(u => u.role === 'candidat').length,
-       recruteurs: users.filter(u => u.role === 'recruteur').length
-     };
+     if (!statsResponse.ok) {
+       if (statsResponse.status === 401 || statsResponse.status === 403) {
+         localStorage.removeItem("token");
+         window.location.href = "login.html";
+         return;
+       }
+       throw new Error('Erreur lors du chargement des statistiques');
+     }
 
-     // Afficher le graphique de répartition
-     renderUserRolesChart(stats);
+     const stats = await statsResponse.json();
+     console.log('Statistiques reçues:', stats); // Debug
 
-     // Initialiser la gestion des utilisateurs
-     const userManager = new UserManager();
-   });
+     // Mettre à jour les compteurs
+     const nbUsers = document.getElementById('nb-users');
+     const nbCandidats = document.getElementById('nb-candidats');
+     const nbRecruteurs = document.getElementById('nb-recruteurs');
+     const nbCvs = document.getElementById('nb-cvs');
 
- // Déconnexion
- document.getElementById("logout-btn").addEventListener("click", () => {
-   localStorage.removeItem("token");
-   window.location.href = "admin-login.html";
- });
+     if (nbUsers) nbUsers.textContent = stats.totalUtilisateurs;
+     if (nbCandidats) nbCandidats.textContent = stats.totalCandidats;
+     if (nbRecruteurs) nbRecruteurs.textContent = stats.totalRecruteurs;
+     if (nbCvs) nbCvs.textContent = stats.totalCVs;
 
- // Navigation entre onglets
- document.querySelectorAll(".admin-sidebar nav a").forEach(link => {
-   link.addEventListener("click", () => {
-     document.querySelectorAll(".admin-sidebar nav a").forEach(l => l.classList.remove("active"));
-     link.classList.add("active");
-     document.querySelectorAll(".admin-section").forEach(sec => sec.classList.remove("active"));
-     document.getElementById(link.dataset.section).classList.add("active");
-   });
- });
+     // Afficher le graphique de répartition des utilisateurs
+     renderUserRolesChart({
+       total: stats.totalUtilisateurs,
+       candidats: stats.totalCandidats,
+       recruteurs: stats.totalRecruteurs
+     });
 
- // --- CVS et Compétences ---
- fetch("/admin/cvs", { headers })
-   .then(res => res.json())
-   .then(cvs => {
-     // Mettre à jour le compteur de CVs
-     document.getElementById('nb-cvs').textContent = cvs.length;
+     // Charger les CVs pour le graphique des compétences
+     const cvsResponse = await fetch("/admin/cvs", { headers });
+     if (!cvsResponse.ok) throw new Error('Erreur lors du chargement des CVs');
+     const cvs = await cvsResponse.json();
 
      // Compter les occurrences de chaque compétence dans les CVs
      const skillsCount = {};
@@ -86,112 +83,41 @@ document.addEventListener("DOMContentLoaded", () => {
        counts: sortedSkills.map(([,count]) => count)
      };
 
-     console.log('Données des compétences:', skillsData); // Pour debug
+     console.log('Données des compétences:', skillsData); // Debug
+
+     // Afficher le graphique des compétences
      renderTopSkillsChart(skillsData);
+
+   } catch (error) {
+     console.error('Erreur chargement dashboard:', error);
+     showAdminMessage('Erreur lors du chargement des statistiques', 'error');
+   }
+ }
+
+ // Charger les statistiques au chargement de la page
+ await loadDashboardStats();
+
+ // Gestion de la déconnexion
+ const logoutBtn = document.getElementById('logout-btn');
+ if (logoutBtn) {
+   logoutBtn.addEventListener('click', () => {
+     localStorage.removeItem('token');
+     showAdminMessage('Déconnexion réussie', 'success');
+     setTimeout(() => {
+       window.location.href = 'login.html';
+     }, 1000);
    });
+ }
 
- // --- COMPÉTENCES ---
- fetch("/competences", { headers })
-   .then(res => res.json())
-   .then(competences => {
-     // Afficher les compétences
-     const competenceList = document.getElementById('competence-list');
-     competenceList.innerHTML = competences.map(comp => `
-       <li>
-         <span>${comp.nom}</span>
-         <button class="delete" onclick="deleteCompetence(${comp.id})">
-           <i class="fas fa-times"></i>
-         </button>
-       </li>
-     `).join('');
-
-     // Trier les compétences par nombre d'utilisations
-     const sortedSkills = competences
-       .sort((a, b) => b.nombre_utilisations - a.nombre_utilisations)
-       .slice(0, 5); // Garder les 5 plus utilisées
-
-     // Formater les données pour le graphique
-     const skillsData = {
-       labels: sortedSkills.map(comp => comp.nom),
-       counts: sortedSkills.map(comp => comp.nombre_utilisations)
-     };
-
-     // Ne pas recréer le graphique ici car il est déjà créé dans la section CVs
-     // renderTopSkillsChart(skillsData);
+ // Navigation entre onglets
+ document.querySelectorAll(".admin-sidebar nav a").forEach(link => {
+   link.addEventListener("click", () => {
+     document.querySelectorAll(".admin-sidebar nav a").forEach(l => l.classList.remove("active"));
+     link.classList.add("active");
+     document.querySelectorAll(".admin-section").forEach(sec => sec.classList.remove("active"));
+     document.getElementById(link.dataset.section).classList.add("active");
    });
-
- // --- AJOUT COMPÉTENCE ---
- document.getElementById("add-competence-form").addEventListener("submit", (e) => {
-   e.preventDefault();
-   const input = document.getElementById("competence-input");
-   const nom = input.value.trim();
-   if (!nom) return;
-
-   fetch("/competences", {
-     method: "POST",
-     headers,
-     body: JSON.stringify({ nom })
-   })
-     .then(res => {
-       if (!res.ok) throw new Error('Erreur lors de l\'ajout de la compétence');
-       return res.json();
-     })
-     .then(() => {
-       input.value = "";
-       showAdminMessage("Compétence ajoutée avec succès", "success");
-       // Recharger la liste des compétences
-       fetch("/competences", { headers })
-         .then(res => res.json())
-         .then(competences => {
-           const competenceList = document.getElementById('competence-list');
-           competenceList.innerHTML = competences.map(comp => `
-             <li>
-               <span>${comp.nom}</span>
-               <button class="delete" onclick="deleteCompetence(${comp.id})">
-                 <i class="fas fa-times"></i>
-               </button>
-             </li>
-           `).join('');
-         });
-     })
-     .catch(error => {
-       showAdminMessage(error.message, "error");
-     });
  });
-
- // Fonction pour supprimer une compétence
- window.deleteCompetence = function(id) {
-   if (!confirm('Êtes-vous sûr de vouloir supprimer cette compétence ?')) return;
-
-   fetch(`/competences/${id}`, {
-     method: "DELETE",
-     headers
-   })
-     .then(res => {
-       if (!res.ok) throw new Error('Erreur lors de la suppression de la compétence');
-       return res.json();
-     })
-     .then(() => {
-       showAdminMessage("Compétence supprimée avec succès", "success");
-       // Recharger la liste des compétences
-       fetch("/competences", { headers })
-         .then(res => res.json())
-         .then(competences => {
-           const competenceList = document.getElementById('competence-list');
-           competenceList.innerHTML = competences.map(comp => `
-             <li>
-               <span>${comp.nom}</span>
-               <button class="delete" onclick="deleteCompetence(${comp.id})">
-                 <i class="fas fa-times"></i>
-               </button>
-             </li>
-           `).join('');
-         });
-     })
-     .catch(error => {
-       showAdminMessage(error.message, "error");
-     });
- };
 });
 
 // ✅ Message admin réutilisable
@@ -201,4 +127,26 @@ function showAdminMessage(message, type = "success") {
  msg.textContent = message;
  document.querySelector(".admin-main").prepend(msg);
  setTimeout(() => msg.remove(), 3000);
+}
+
+function getInitials(name) {
+  return name
+    .split(' ')
+    .map(n => n[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2);
+}
+
+function showAlert(message, type = 'info') {
+  const alertContainer = document.getElementById('alert-container');
+  const alert = document.createElement('div');
+  alert.className = `alert alert-${type}`;
+  alert.textContent = message;
+  
+  alertContainer.appendChild(alert);
+  
+  setTimeout(() => {
+    alert.remove();
+  }, 3000);
 }
