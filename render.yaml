@@ -2,8 +2,9 @@ services:
   - type: web
     name: cvconnect
     env: node
+    nodeVersion: 18.17.0
     buildCommand: npm install && npm run build
-    startCommand: node src/server.js
+    startCommand: node dist/server.js
     envVars:
       - key: NODE_ENV
         value: production
