@@ -1,0 +1,33 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const adminController_1 = require("../controllers/adminController");
+const authMiddleware_1 = require("../middlewares/authMiddleware");
+const checkRole_1 = require("../middlewares/checkRole");
+const adminController_2 = require("../controllers/adminController");
+const adminController_3 = require("../controllers/adminController");
+const adminController_4 = require("../controllers/adminController");
+const adminController_5 = require("../controllers/adminController");
+const adminController_6 = require("../controllers/adminController");
+const competenceController_1 = require("../controllers/competenceController");
+const suggestionController_1 = require("../controllers/suggestionController");
+const router = express_1.default.Router();
+router.post('/login-dev', adminController_1.loginAdminDev);
+router.get('/utilisateurs', authMiddleware_1.authMiddleware, (0, checkRole_1.checkRole)('admin'), adminController_1.getTousUtilisateurs);
+router.get('/cvs', authMiddleware_1.authMiddleware, (0, checkRole_1.checkRole)('admin'), adminController_2.getTousCVs);
+router.get('/cvs/:id', authMiddleware_1.authMiddleware, (0, checkRole_1.checkRole)('admin'), adminController_2.getCVDetails);
+router.delete('/utilisateurs/:id', authMiddleware_1.authMiddleware, (0, checkRole_1.checkRole)('admin'), adminController_3.supprimerUtilisateurParAdmin);
+router.delete('/cvs/:id', authMiddleware_1.authMiddleware, (0, checkRole_1.checkRole)('admin'), adminController_4.supprimerCVParAdmin);
+router.patch('/utilisateurs/:id/status', authMiddleware_1.authMiddleware, (0, checkRole_1.checkRole)('admin'), adminController_5.changerStatutUtilisateur);
+router.get('/stats', authMiddleware_1.authMiddleware, (0, checkRole_1.checkRole)('admin'), adminController_6.getStats);
+router.get('/competences', authMiddleware_1.authMiddleware, (0, checkRole_1.checkRole)('admin'), competenceController_1.getAllCompetences);
+router.post('/competences', authMiddleware_1.authMiddleware, (0, checkRole_1.checkRole)('admin'), competenceController_1.addCompetence);
+router.delete('/competences/:id', authMiddleware_1.authMiddleware, (0, checkRole_1.checkRole)('admin'), competenceController_1.deleteCompetence);
+// Routes pour les suggestions
+router.get('/suggestions', authMiddleware_1.authMiddleware, (0, checkRole_1.checkRole)('admin'), suggestionController_1.getSuggestions);
+router.post('/suggestions', authMiddleware_1.authMiddleware, (0, checkRole_1.checkRole)('admin'), suggestionController_1.createSuggestion);
+router.patch('/suggestions/:id/status', authMiddleware_1.authMiddleware, (0, checkRole_1.checkRole)('admin'), suggestionController_1.updateStatus);
+exports.default = router;
