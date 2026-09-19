@@ -2,13 +2,16 @@
 
 Plateforme web réalisée en binôme pour gérer des **profils candidats, des CV et des interactions recruteur/candidat** à travers un backend REST Node.js / Express écrit en TypeScript.
 
-## En bref — contribution & valeur
+## Ma contribution
 
-- **Co-développé** un backend TypeScript structuré en routes, contrôleurs, modèles et middlewares.
+J’ai réalisé **l’intégralité du backend** du projet.
+
+- **Conçu et développé** le backend TypeScript / Node.js / Express en structurant l’application en routes, contrôleurs, modèles et middlewares.
 - **Implémenté** l’authentification JWT et le hachage des mots de passe avec bcrypt.
-- **Géré** plusieurs rôles applicatifs avec contrôle d’accès côté serveur.
-- **Ajouté** la création, modification, consultation et export PDF des CV.
-- **Intégré** favoris, notifications, suggestions et messagerie interne pour couvrir plusieurs parcours utilisateurs.
+- **Mis en place** la gestion des rôles et les contrôles d’accès côté serveur.
+- **Développé** les fonctionnalités de création, consultation, modification, suppression et export PDF des CV.
+- **Intégré** les favoris, notifications, suggestions et la messagerie interne.
+- **Géré** la persistance JSON de cette version et la validation des échanges côté serveur.
 
 ## Stack technique
 
