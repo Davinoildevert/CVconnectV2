@@ -1,43 +1,50 @@
 # CVConnect
 
-CVConnect est une plateforme web réalisée en binôme dans le cadre d’un projet étudiant. Elle permet de gérer des profils candidats, des CV et des interactions avec des recruteurs à travers une API Node.js / Express écrite en TypeScript.
+Plateforme web réalisée en binôme pour gérer des **profils candidats, des CV et des interactions recruteur/candidat** à travers un backend REST Node.js / Express écrit en TypeScript.
 
-Le projet met surtout l’accent sur la **conception d’un backend REST, l’authentification, la gestion des rôles et la manipulation de données côté serveur**.
+## En bref — contribution & valeur
+
+- **Co-développé** un backend TypeScript structuré en routes, contrôleurs, modèles et middlewares.
+- **Implémenté** l’authentification JWT et le hachage des mots de passe avec bcrypt.
+- **Géré** plusieurs rôles applicatifs avec contrôle d’accès côté serveur.
+- **Ajouté** la création, modification, consultation et export PDF des CV.
+- **Intégré** favoris, notifications, suggestions et messagerie interne pour couvrir plusieurs parcours utilisateurs.
 
 ## Stack technique
 
 - **TypeScript**
 - **Node.js**
 - **Express**
-- **JWT** pour l’authentification
-- **bcryptjs** pour le hachage des mots de passe
-- **Puppeteer** pour la génération de PDF
-- **JSON** pour le stockage des données dans cette version
-- HTML / CSS / JavaScript pour les vues
+- **JWT**
+- **bcryptjs**
+- **Puppeteer**
+- **JSON** pour la persistance de cette version
+- HTML / CSS / JavaScript
 
-> Cette version publique utilise des fichiers JSON comme stockage. Une migration vers une base de données comme MongoDB ou PostgreSQL fait partie des évolutions possibles du projet.
+> La version publique utilise actuellement des fichiers JSON. MongoDB ou PostgreSQL constituent des pistes d’évolution, et ne sont pas présentés comme déjà intégrés.
 
-## Fonctionnalités implémentées
+## Fonctionnalités
 
 ### Utilisateurs
 - création de compte ;
 - rôles candidat / recruteur ;
-- authentification par JWT ;
+- authentification JWT ;
 - hachage des mots de passe ;
-- consultation et modification du profil ;
-- changement et réinitialisation du mot de passe ;
-- activation/désactivation de comptes.
+- profil utilisateur ;
+- changement / réinitialisation de mot de passe ;
+- activation / désactivation de comptes.
 
 ### CV
-- création et consultation de CV ;
-- modification et suppression ;
+- création ;
+- consultation ;
+- modification ;
+- suppression ;
 - filtrage par compétences ;
-- génération d’un CV ;
-- export PDF ;
-- gestion de favoris côté recruteur.
+- génération et export PDF ;
+- favoris recruteur.
 
 ### Interactions
-- système de suggestions ;
+- suggestions ;
 - notifications ;
 - messagerie interne ;
 - contrôle d’accès selon le rôle.
@@ -47,14 +54,14 @@ Le projet met surtout l’accent sur la **conception d’un backend REST, l’au
 ```text
 CVconnectV2/
 ├── src/
-│   ├── controllers/       # logique des routes
-│   ├── models/            # accès aux données
-│   ├── routes/            # endpoints Express
-│   ├── middlewares/       # authentification et rôles
-│   ├── configs/           # configuration
-│   ├── views/             # vues frontend
-│   └── server.ts          # point d’entrée
-├── data/                  # stockage JSON
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middlewares/
+│   ├── configs/
+│   ├── views/
+│   └── server.ts
+├── data/
 ├── public/
 ├── package.json
 └── tsconfig.json
@@ -62,15 +69,15 @@ CVconnectV2/
 
 ## API
 
-Le serveur expose notamment des routes pour :
+Principaux groupes de routes :
 
-- `/utilisateurs` — comptes, profil, authentification ;
-- `/cvs` — gestion des CV ;
-- `/competences` — gestion des compétences ;
-- `/admin` — actions d’administration ;
-- `/suggestions` — suggestions utilisateurs.
+- `/utilisateurs`
+- `/cvs`
+- `/competences`
+- `/admin`
+- `/suggestions`
 
-Certaines routes sont protégées par un middleware JWT et par une vérification du rôle utilisateur.
+Les routes sensibles utilisent l’authentification JWT et des vérifications de rôle.
 
 ## Installation
 
@@ -81,35 +88,19 @@ npm install
 npm run dev
 ```
 
-Le serveur démarre sur `http://localhost:3000`.
+Serveur : `http://localhost:3000`
 
-## Points techniques travaillés
+## Compétences démontrées
 
-- conception d’une API REST avec Express ;
-- TypeScript côté serveur ;
-- authentification JWT ;
-- middleware d’autorisation ;
-- hachage de mots de passe ;
-- séparation routes / contrôleurs / modèles ;
-- validation des données ;
-- génération PDF avec Puppeteer ;
-- gestion de plusieurs rôles applicatifs.
+**TypeScript • Node.js • Express • API REST • JWT • autorisation par rôles • validation de données • génération PDF • architecture backend**
 
-## Limites actuelles
+## Limites & améliorations
 
-- stockage JSON adapté au contexte pédagogique mais pas à une mise en production ;
-- tests automatisés encore à renforcer ;
-- certaines fonctionnalités mériteraient une couche de persistance dédiée ;
-- le frontend reste secondaire par rapport au travail backend.
-
-## Évolutions possibles
-
-- migration vers MongoDB ou PostgreSQL ;
-- ajout de tests unitaires et d’intégration ;
+- stockage JSON adapté au contexte pédagogique ;
+- tests automatisés à renforcer ;
+- migration future vers MongoDB ou PostgreSQL ;
 - documentation OpenAPI ;
-- conteneurisation ;
-- CI/CD ;
-- amélioration du frontend.
+- CI/CD et conteneurisation.
 
 ## Auteurs
 
